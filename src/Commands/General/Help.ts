@@ -1,6 +1,11 @@
 import { BaseCommand, Command, Message } from '../../Structures'
 import { IArgs } from '../../Types'
-
+export default class extends BaseCommand {
+    public override execute = async (M: Message, { context }: IArgs): Promise<void> => {
+        if (!context) {
+            let commands = Array.from(this.handler.commands, ([command, data]) => ({
+                command,
+                data
 @Command('help', {
     description: "Displays the bot's usable commands",
     aliases: ['h'],
@@ -9,19 +14,20 @@ import { IArgs } from '../../Types'
     usage: 'help || help <command_name>',
     category: 'general'
 })
-export default class extends BaseCommand {
-    public override execute = async (M: Message, { context }: IArgs): Promise<void> => {
-        if (!context) {
-            let commands = Array.from(this.handler.commands, ([command, data]) => ({
-                command,
-                data
-            })).filter((command) => command.data.config.category !== 'dev')
-            const { nsfw } = await this.client.DB.getGroup(M.from)
-            if (!nsfw) commands = commands.filter(({ data }) => data.config.category !== 'nsfw')
-            let text = `👋🏻 Kønnīçhiwã!(❤️W❤️) *@${M.sender.jid.split('@')[0]}*, I'm ${
-                this.client.config.name
-            }\nMy prefix is - "${this.client.config.prefix}"\n\n🌀My Command List🌀.`
-           let text = `hello there`}
-            )
-        }
+run = async (M: ISimplifiedMessage): Promise<void> => {
+        const n = [
+            'https://telegra.ph/file/90c8d596818e948cc6a82.mp4'
+        ]
+        let well = n[Math.floor(Math.random() * n.length)]
+        return void this.client.sendMessage(M.from, { url: well }, MessageType.video, {quoted:M.WAMessage,
+            mimetype: Mimetype.gif,
+            caption: `(❤️ω❤️)Konnichiwa👋 Darling I'm 𝗭𝗲𝗿𝗼𝗧𝘄𝗼!
+Hllo
+┌────────────┈
+│  ゼロツー❤️
+└────────────┈` }
+        )
     }
+}
+
+
