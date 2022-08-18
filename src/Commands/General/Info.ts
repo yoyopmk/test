@@ -20,9 +20,9 @@ export default class extends BaseCommand {
         const text = `🧧 *ZeroTwo_Test* 🧧\n\n📙 *Description: This Bot is in Under devlopment so You can use the orignal repo of this bot✌🏻💫*\n\n🔗 *Commands:* ${this.handler.commands.size}\n\n🚦 *Uptime:* ${uptime}`
         return void (await reply(image, 'image', undefined, undefined, text, undefined, {
             title: this.client.utils.capitalize(name),
-            thumbnail: https://telegra.ph/file/217ea2716360f9e431d6a.jpg,
+            thumbnail: image,
             mediaType: 1,
-            sourceUrl: 
+            sourceUrl: homepage 
         }))
     }
 }
