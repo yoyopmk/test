@@ -1,5 +1,5 @@
 {
-  "name": "WhatsApp-bot",
+  "name": "ZeroTwo",
   "description": "A WhatsApp Bot written in TypeScript using Baileys.",
   "keywords": [
     "bot",
@@ -7,9 +7,9 @@
     "whatsapp-bot",
     "whatsapp-anime-bot"
   ],
-  "logo": "https://raw.githubusercontent.com/LuckyYam/WhatsApp-bot/master/assets/images/whatsapp-bot.png",
-  "website": "https://github.com/LuckyYam/WhatsApp-bot#readme",
-  "repository": "https://github.com/LuckyYam/WhatsApp-bot.git",
+  "logo": "https://www.linkpicture.com/q/images-6_125.jpeg",
+  "website": "https://github.com/Toshi_san001/Zerus#readme",
+  "repository": "https://github.com/Toshi_san001/Zerus.git",
   "success_url": "/",
   "env": {
     "BOT_NAME": {
