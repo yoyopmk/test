@@ -17,12 +17,12 @@ export default class extends BaseCommand {
         const message = context ? context.trim() : M.quoted ? M.quoted.content : ''
         let text = `${message !== '' ? `🧧 *Message: ${message}*\n\n` : ''}🍀 *Group:* ${
             M.groupMetadata.subject
-        }\n🎈 *Members:* ${M.groupMetadata.participants.length}\n📣 *Tagger: @${
+        }\n🔰 *Members:* ${M.groupMetadata.participants.length}\n📣 *init: @${
             M.sender.jid.split('@')[0]
-        }*\n🔖 *Tags:* ${hidden ? '*[HIDDEN]*' : '\n'}`
+        }*\n💡 *Tags:* ${hidden ? '*[HIDDEN]*' : '\n'}`
         const botJid = this.client.correctJid(this.client.user?.id || '')
         if (!hidden) {
-            text += `\n🍁 *@${botJid.split('@')[0]}*`
+            text += `\n🌀 *@${botJid.split('@')[0]}*`
             const mods: string[] = []
             const admins: string[] = []
             const members: string[] = []
@@ -38,10 +38,10 @@ export default class extends BaseCommand {
                 }
                 members.push(jid)
             }
-            for (let i = 0; i < mods.length; i++) text += `${i === 0 ? '\n\n' : '\n'}🌟 *@${mods[i].split('@')[0]}*`
-            for (let i = 0; i < admins.length; i++) text += `${i === 0 ? '\n\n' : '\n'}💈 *@${admins[i].split('@')[0]}*`
+            for (let i = 0; i < mods.length; i++) text += `${i === 0 ? '\n\n' : '\n'}🏅 *@${mods[i].split('@')[0]}*`
+            for (let i = 0; i < admins.length; i++) text += `${i === 0 ? '\n\n' : '\n'}🥇 *@${admins[i].split('@')[0]}*`
             for (let i = 0; i < members.length; i++)
-                text += `${i === 0 ? '\n\n' : '\n'}🎗 *@${members[i].split('@')[0]}*`
+                text += `${i === 0 ? '\n\n' : '\n'}🥈 *@${members[i].split('@')[0]}*`
         }
         return void (await M.reply(
             text,
