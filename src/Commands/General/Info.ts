@@ -15,10 +15,9 @@ export default class extends BaseCommand {
             homepage: string
             name: string
         }
-        const users = await this.client.DB.user.countDocuments();
         const image = this.client.assets.get('Zerotwo') as Buffer
         const uptime = this.client.utils.formatSeconds(process.uptime())
-        const text = `🧧 *ZeroTwo_Test* 🧧\n\n📙 *Description: This Bot is in Under devlopment so You can use the orignal repo of this bot✌🏻💫*\n\n🔗 *Commands:* ${this.handler.commands.size}\n\n🚦 *Uptime:* ${uptime}\n\n 💡 *Users:* ${users}`
+        const text = `🧧 *ZeroTwo_Test* 🧧\n\n📙 *Description: This Bot is in Under devlopment so You can use the orignal repo of this bot✌🏻💫*\n\n🔗 *Commands:* ${this.handler.commands.size}\n\n🚦 *Uptime:* ${uptime}`
         return void (await reply(image, 'image', undefined, undefined, text, undefined, {
             title: this.client.utils.capitalize(name),
             thumbnail: https://telegra.ph/file/217ea2716360f9e431d6a.jpg,
