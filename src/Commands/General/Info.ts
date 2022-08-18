@@ -15,14 +15,15 @@ export default class extends BaseCommand {
             homepage: string
             name: string
         }
-        const image = this.client.assets.get('whatsapp-bot') as Buffer
+        const users = await this.client.DB.user.countDocuments();
+        const image = this.client.assets.get('Zerotwo') as Buffer
         const uptime = this.client.utils.formatSeconds(process.uptime())
-        const text = `🌟 *WhatsApp-bot* 🌟\n\n📙 *Description: ${description}*\n\n🔗 *Commands:* ${this.handler.commands.size}\n\n🚦 *Uptime:* ${uptime}`
+        const text = `🧧 *ZeroTwo_Test* 🧧\n\n📙 *Description: This Bot is in Under devlopment so You can use the orignal repo of this bot✌🏻💫*\n\n🔗 *Commands:* ${this.handler.commands.size}\n\n🚦 *Uptime:* ${uptime}\n\n 💡 *Users:* ${users}`
         return void (await reply(image, 'image', undefined, undefined, text, undefined, {
             title: this.client.utils.capitalize(name),
-            thumbnail: image,
+            thumbnail: https://telegra.ph/file/217ea2716360f9e431d6a.jpg,
             mediaType: 1,
-            sourceUrl: homepage
+            sourceUrl: 
         }))
     }
 }
