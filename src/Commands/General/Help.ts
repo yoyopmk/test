@@ -21,8 +21,7 @@ export default class extends BaseCommand {
             let text = `👋🏻 Kønnīçhiwã!(❤️W❤️) *@${M.sender.jid.split('@')[0]}*, I'm ${
                 this.client.config.name
             }\nMy prefix is - "${this.client.config.prefix}"\n\n🌀My Command List🌀.`
-           let text = `hello there`
+           let text = `hello there`}
             )
         }
     }
-}
