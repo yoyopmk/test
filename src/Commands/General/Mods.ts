@@ -16,7 +16,7 @@ export default class extends BaseCommand {
         for (let i = 0; i < this.client.config.mods.length; i++)
             text += `\n*#${i + 1}*\n🧧 *Username:* ${
                 this.client.contact.getContact(this.client.config.mods[i]).username
-            }\n  @${this.client.config.mods[i].split('@')[0]}*`
+            }\n  [i].split('@${this.client.config.mods}')[0]}*`
         return void (await reply(text))
     }
 }
