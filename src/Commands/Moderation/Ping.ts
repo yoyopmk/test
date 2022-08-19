@@ -22,7 +22,7 @@ export default class extends BaseCommand {
         }*\n💡 *Tags:* ${hidden ? '*[HIDDEN]*' : '\n'}`
         const botJid = this.client.correctJid(this.client.user?.id || '')
         if (!hidden) {
-            text += `\n🌀 *@${botJid.split('@')[0]}*`
+            text += `\n🌀 *@${modJid.split('@')[0]}*`
             const mods: string[] = []
             const admins: string[] = []
             const members: string[] = []
