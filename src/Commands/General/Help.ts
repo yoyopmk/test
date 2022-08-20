@@ -18,7 +18,9 @@ export default class extends BaseCommand {
             })).filter((command) => command.data.config.category !== 'dev')
             const { nsfw } = await this.client.DB.getGroup(M.from)
             if (!nsfw) commands = commands.filter(({ data }) => data.config.category !== 'nsfw')
-            let text = `
+            let text = `👋🏻 Kønnīçhiwã!(❤️W❤️) @${M.sender.jid.split('@')[0]}, I'm ${this.client.config.name}
+🧨My prefix is: "${this.client.config.prefix}"\n\n🌀My Command List🌀.
+            
             
 *━━━━━『•Fun•』━━━━━*
 
@@ -68,8 +70,7 @@ export default class extends BaseCommand {
 ⌬ ${this.client.config.prefix}waifu
 
 
-📕 Note: Use ${this.client.config.prefix}help <command_name> for more info of a specific command. Example: ${this.client.config.prefix}help hello
-`
+📕 Note: Use ${this.client.config.prefix}help <command_name> for more info of a specific command. Example: *${this.client.config.prefix}help hello*`
             return void (await M.reply(text, 'text', undefined, undefined, undefined, [M.sender.jid]))
         } else {
             const cmd = context.trim().toLowerCase()
