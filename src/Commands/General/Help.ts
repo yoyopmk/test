@@ -20,7 +20,33 @@ export default class extends BaseCommand {
             if (!nsfw) commands = commands.filter(({ data }) => data.config.category !== 'nsfw')
             let text = `👋🏻 Kønnīçhiwã!(❤️W❤️) *@${M.sender.jid.split('@')[0]}*, I'm ${
                 this.client.config.name
-            }\n🧨My prefix is - "${this.client.config.prefix}"\n\n🌀My Command List🌀.`
+            }\n🧨My prefix is - "${this.client.config.prefix}"\n\n🌀My Command List🌀.
+
+
+*━━━━『•Fun•』━━━━*
+
+🧧friendship, reaction, ship, simp, triggered
+
+*━━━━『•General•』━━━━*
+
+🧧help, hi, info, mods, profile, rank
+
+*━━━━『•Media•』━━━━*
+
+🧧lyrics, play, spotify, yta, yts, ytv
+
+*━━━━『•Moderation•』━━━━*
+
+🧧ping, set
+
+*━━━━『•Utils•』━━━━*
+
+🧧prettier, react, retrieve, sticker
+
+*━━━━『•Weeb•』━━━━*
+
+🧧anime, character, kitsune, manga, neko, waifu
+
             const categories: string[] = []
             for (const command of commands) {
                 if (categories.includes(command.data.config.category)) continue
@@ -29,9 +55,9 @@ export default class extends BaseCommand {
             for (const category of categories) {
                 const categoryCommands: string[] = []
                 const filteredCommands = commands.filter((command) => command.data.config.category === category)
-                text += `\n\n*━━━━『•${this.client.utils.capitalize(category)}•』━━━━*\n\n`
+                text += ``
                 filteredCommands.forEach((command) => categoryCommands.push(command.data.name))
-                text += `\`\`\`🧧${categoryCommands.join(', ')}\`\`\``
+                text += `\`\`\`\`\`\``
             }
             text += `\n\n📕 *Note:* Use ${this.client.config.prefix}help <command_name> for more info of a specific command. Example: *${this.client.config.prefix}help hello*`
             return void (await M.reply(text, 'text', undefined, undefined, undefined, [M.sender.jid]))
