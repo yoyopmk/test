@@ -45,7 +45,7 @@ export default class extends BaseCommand {
 
 *━━━━『•Weeb•』━━━━*
 
-🧧anime, character, kitsune, manga, neko, waifu
+🧧anime, character, kitsune, manga, neko, waifu`
 
             const categories: string[] = []
             for (const command of commands) {
