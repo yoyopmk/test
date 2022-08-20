@@ -46,18 +46,6 @@ export default class extends BaseCommand {
 *━━━━『•Weeb•』━━━━*
 
 🧧anime, character, kitsune, manga, neko, waifu`
-
-            const categories: string[] = []
-            for (const command of commands) {
-                if (categories.includes(command.data.config.category)) continue
-                categories.push(command.data.config.category)
-            }
-            for (const category of categories) {
-                const categoryCommands: string[] = []
-                const filteredCommands = commands.filter((command) => command.data.config.category === category)
-      
-                filteredCommands.forEach((command) => categoryCommands.push(command.data.name))
-      
             }
             text += `\n\n📕 *Note:* Use ${this.client.config.prefix}help <command_name> for more info of a specific command. Example: *${this.client.config.prefix}help hello*`
             return void (await M.reply(text, 'text', undefined, undefined, undefined, [M.sender.jid]))
