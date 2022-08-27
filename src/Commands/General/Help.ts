@@ -70,7 +70,7 @@ export default class extends BaseCommand {
 
 📕 Note: Use ${this.client.config.prefix}help <command_name> for more info of a specific command. Example: ${this.client.config.prefix}help hello
 `
-            )
+            
         }
     }
 }
