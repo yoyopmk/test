@@ -46,7 +46,7 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
             printQRInTerminal: true,
             auth: state,
             logger: P({ level: 'fatal' }),
-            browser: ['WhatsApp-bot', 'fatal', '4.0.0'],
+            browser: ['ZERUS', 'fatal', '4.0.0'],
             getMessage: async (key) => {
                 return {
                     conversation: ''
