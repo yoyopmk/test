@@ -20,7 +20,7 @@ module.exports = class command extends Command {
      */
 
     execute = async (M) => {
-        const image = this.helper.assets.get('whatsapp-bot')
+        const image = this.helper.assets.get('Zerus')
         const pad = (s) => (s < 10 ? '0' : '') + s
         const formatTime = (seconds) => {
             const hours = Math.floor(seconds / (60 * 60))
