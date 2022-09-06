@@ -1,8 +1,8 @@
 {
-  "name": "whatsapp-bot",
+  "name": "Zerus",
   "version": "0.0.1",
   "description": "A WhatsApp bot written in TypeScript using Baileys",
-  "author": "Lucky Yambem",
+  "author": "Toshi_sama",
   "main": "dist/bot.js",
   "keywords": [
     "bot",
@@ -17,12 +17,12 @@
     "postinstall": "yarn build"
   },
   "bugs": {
-    "url": "https://github.com/LuckyYam/WhatsApp-bot/issues"
+    "url": "https://github.com/Toshi-san001/Zerus/issues"
   },
-  "homepage": "https://github.com/LuckyYam/WhatsApp-bot",
+  "homepage": "https://github.com/Toshi-san001/Zerus",
   "repository": {
     "type": "git",
-    "url": "https://github.com/LuckyYam/WhatsApp-bot.git"
+    "url": "https://github.com/Toshi-san001/Zerus.git"
   },
   "dependencies": {
     "@adiwajshing/baileys": "^4.3.0",
