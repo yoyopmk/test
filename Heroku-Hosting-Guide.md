@@ -1,4 +1,4 @@
-# WhatsApp-bot Heroku Deploy Guide
+# Zerus Heroku Deploy Guide
 
 ## ⚠ Requirements
 
@@ -6,7 +6,7 @@
 
 ### Pre-requisite
 
-1. [WhatsApp-bot](https://github.com/LuckyYam/WhatsApp-bot) - Go there
+1. [WhatsApp-bot](https://github.com/Toshi-san001/Zerus) - Go there
 2. Scroll down a bit and you will see the "Deploy To Heroku" button in purple color (sorry if you are color blind)
 3. Click on it and login or sign up for Heroku
 4. Enter the following fields
