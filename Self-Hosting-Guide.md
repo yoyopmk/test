@@ -1,4 +1,4 @@
-# WhatsApp-bot Self-Hosting-Guide
+# Zerus Self-Hosting-Guide
 
 ## ⛵ Prerequisites
 
@@ -12,8 +12,8 @@
 
  Run the following commands to clone the repo
  ```SH
-> git clone https://github.com/LuckyYam/WhatsApp-bot
-> cd WhatsApp-bot
+> git clone https://github.com/Toshi-san001/Zerus
+> cd Zerus
  ```
 
  Run this following command to install the dependencies 
@@ -51,4 +51,4 @@
 
 # Don't want to do the hassle of setting up on your own PC?
 
- [Set it up on Heroku](https://github.com/LuckyYam/WhatsApp-bot/blob/master/Heroku-Hosting-Guide.md)
+ [Set it up on Heroku](https://github.com/Toshi-san001/Zerus/blob/master/Heroku-Hosting-Guide.md)
