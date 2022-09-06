@@ -15,9 +15,9 @@ export default class extends BaseCommand {
             homepage: string
             name: string
         }
-        const image = this.client.assets.get('whatsaap-bot') as Buffer
+        const image = this.client.assets.get('whatsapp-bot') as Buffer
         const uptime = this.client.utils.formatSeconds(process.uptime())
-        const text = `🀄 *ZeroTwo* 🀄\n\n🌀 *Description: ${description}*\n\n🏮 *Commands:* ${this.handler.commands.size}\n\n🔰 *Uptime:* ${uptime}`
+        const text = `🀄 *ZeroTwo* 🀄\n\n📙 *Description: ${description}*\n\n🔰 *Commands:* ${this.handler.commands.size}\n\n💮 *Uptime:* ${uptime}`
         return void (await reply(image, 'image', undefined, undefined, text, undefined, {
             title: this.client.utils.capitalize(name),
             thumbnail: image,
