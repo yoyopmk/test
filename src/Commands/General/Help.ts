@@ -18,13 +18,59 @@ export default class extends BaseCommand {
             })).filter((command) => command.data.config.category !== 'dev')
             const { nsfw } = await this.client.DB.getGroup(M.from)
             if (!nsfw) commands = commands.filter(({ data }) => data.config.category !== 'nsfw')
-            let text = `👋🏻 (💙ω💙) Konichiwa! *@${M.sender.jid.split('@')[0]}*, I'm ${
-                this.client.config.name
-            }\nMy prefix is - "${this.client.config.prefix}"\n\nThe usable commands are listed below.
+            let text = `konnichiwa
+            
+*━━━━━『•Fun•』━━━━━*
 
-         Hello ye
-           
-`}
-        )
+⌬ ${this.client.config.prefix}friendship
+⌬ ${this.client.config.prefix}reaction
+⌬ ${this.client.config.prefix}ship
+⌬ ${this.client.config.prefix}simp
+⌬ ${this.client.config.prefix}triggered
+
+*━━━━━『•General•』━━━━━*
+
+⌬ ${this.client.config.prefix}help
+⌬ ${this.client.config.prefix}hi
+⌬ ${this.client.config.prefix}info
+⌬ ${this.client.config.prefix}mods
+⌬ ${this.client.config.prefix}profile
+⌬ ${this.client.config.prefix}rank
+
+*━━━━━『•Media•』━━━━━*
+
+⌬ ${this.client.config.prefix}lurics
+⌬ ${this.client.config.prefix}play
+⌬ ${this.client.config.prefix}spotify
+⌬ ${this.client.config.prefix}yta
+⌬ ${this.client.config.prefix}yts
+⌬ ${this.client.config.prefix}ytv
+
+*━━━━━『•Moderation•』━━━━━*
+
+⌬ ${this.client.config.prefix}ping
+⌬ ${this.client.config.prefix}set
+
+*━━━━━『•Utils•』━━━━━*
+
+⌬ ${this.client.config.prefix}prettier
+⌬ ${this.client.config.prefix}react
+⌬ ${this.client.config.prefix}retrieve
+⌬ ${this.client.config.prefix}sticker
+
+*━━━━━『•Weeb•』━━━━━*
+
+⌬ ${this.client.config.prefix}anime
+⌬ ${this.client.config.prefix}character
+⌬ ${this.client.config.prefix}kitsune
+⌬ ${this.client.config.prefix}manga
+⌬ ${this.client.config.prefix}neko
+⌬ ${this.client.config.prefix}waifu
+
+
+📕 Note: Use ${this.client.config.prefix}help <command_name> for more info of a specific command. Example: ${this.client.config.prefix}help hello
+`
+            
+        }
     }
 }
