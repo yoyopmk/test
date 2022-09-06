@@ -2,17 +2,16 @@
 
 <div align='center'>
 
-<h2> WhatsApp-bot </h2>
+<h2> Zerus </h2>
   
-<a href='https://github.com/LuckyYam/Whatsapp-bot/releases'>
-  
-<img src='https://img.shields.io/github/v/release/LuckyYam/WhatsApp-bot?color=%231e81b0&label=version&style=for-the-badge'>
+<a href='https://github.com/Toshi-san001/Zerus/releases'>
+ 
   
 </a>
   
-<a href='https://github.com/LuckyYam/Whatsapp-bot/blob/master/LICENSE'>
+<a href='https://github.com/Toshi-san001/Zerus/blob/master/LICENSE'>
   
-<img src='https://img.shields.io/github/license/LuckyYam/WhatsApp-bot?color=%231e81b0&style=for-the-badge'>
+<img src='https://img.shields.io/github/license/Toshi-san001/Zerus?color=%231e81b0&style=for-the-badge'>
   
 </a>
   
@@ -45,8 +44,8 @@
 
  ## 📙 Guide
 
- - [Self Hosting Guide](https://github.com/LuckyYam/WhatsApp-bot/blob/master/Self-Hosting-Guide.md)
- - [Heroku Hosting Guide](https://github.com/LuckyYam/WhatsApp-bot/blob/master/Heroku-Hosting-Guide.md)
+ - [Self Hosting Guide](https://github.com/Toshi-san001/Zerus/blob/master/Self-Hosting-Guide.md)
+ - [Heroku Hosting Guide](https://github.com/Toshi-san001/Zerus/blob/master/Heroku-Hosting-Guide.md)
 
  ## 💪 Contributing
 
@@ -55,4 +54,4 @@
 
  ## 🎐 License
 
- WhatsApp-bot is free and open-source software licensed under the [GNU Affero General Public License v3.0](https://github.com/LuckyYam/WhatsApp-bot/blob/master/LICENSE).
+ [GNU Affero General Public License v3.0](https://github.com/Toshi-san001/Zerus/blob/master/LICENSE).
