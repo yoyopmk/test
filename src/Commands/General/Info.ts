@@ -1,56 +1,27 @@
-const Command = require('../../Structures/Command')
-const Message = require('../../Structures/Message')
-const { description, homepage, name } = require('../../../package.json')
+import { join } from 'path'
+import { BaseCommand, Command, Message } from '../../Structures'
 
-module.exports = class command extends Command {
-    constructor() {
-        super('info', {
-            description: "Displays bot's info",
-            aliases: ['bot'],
-            category: 'general',
-            exp: 100,
-            usage: 'info',
-            cooldown: 10
-        })
-    }
-
-    /**
-     * @param {Message} M
-     * @returns {Promise<void>}
-     */
-
-    execute = async (M) => {
-        const image = this.helper.assets.get('Zerus')
-        const pad = (s) => (s < 10 ? '0' : '') + s
-        const formatTime = (seconds) => {
-            const hours = Math.floor(seconds / (60 * 60))
-            const minutes = Math.floor((seconds % (60 * 60)) / 60)
-            const secs = Math.floor(seconds % 60)
-            return `${pad(hours)}:${pad(minutes)}:${pad(secs)}`
+@Command('info', {
+    description: "Displays bot's info",
+    usage: 'info',
+    category: 'general',
+    cooldown: 10,
+    exp: 100
+})
+export default class extends BaseCommand {
+    public override execute = async ({ reply }: Message): Promise<void> => {
+        const { description, name, homepage } = require(join(__dirname, '..', '..', '..', 'package.json')) as {
+            description: string
+            homepage: string
+            name: string
         }
-        const uptime = formatTime(process.uptime())
-        const text = `🏮 *ZeroTwo* 🏮\n\n📙 *Description: This bot is in under construction*\n\n🧧 *Commands:* ${
-            Array.from(this.handler.commands, ([command, data]) => ({
-                command,
-                data
-            })).length
-        }\n\n🔰 *Uptime:* ${uptime}`
-        return void (await this.client.sendMessage(
-            M.from,
-            {
-                image,
-                caption: Code_002,
-                contextInfo: {
-                    externalAdReply: {
-                        title: ZeroTwo_Test,
-                        mediaType: 1,
-                        thumbnail: image,
-                    }
-                }
-            },
-            {
-                quoted: M.message
-            }
-        ))
+        const image = this.client.assets.get('whatsapp-bot') as Buffer
+        const uptime = this.client.utils.formatSeconds(process.uptime())
+        const text = `🀄 *ZeroTwo* 🀄\n\n🌀 *Description: ${description}*\n\n🏮 *Commands:* ${this.handler.commands.size}\n\n🔰 *Uptime:* ${uptime}`
+        return void (await reply(image, 'image', undefined, undefined, text, undefined, {
+            title: this.client.utils.capitalize(name),
+            thumbnail: image,
+            mediaType: 1,
+        }))
     }
 }
