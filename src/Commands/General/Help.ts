@@ -22,8 +22,9 @@ export default class extends BaseCommand {
                 this.client.config.name
             }\nMy prefix is - "${this.client.config.prefix}"\n\nThe usable commands are listed below.
 
-         Hello ye`
-            )
-        }
+         Hello ye
+           
+`}
+        )
     }
 }
