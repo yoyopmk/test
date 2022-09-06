@@ -15,14 +15,14 @@ export default class extends BaseCommand {
         const hidden = this.getPingOptions(flags)
         flags.forEach((flag) => (context = context.replace(flag, '')))
         const message = context ? context.trim() : M.quoted ? M.quoted.content : ''
-        let text = `${message !== '' ? `🧧 *Message: ${message}*\n\n` : ''}🍀 *Group:* ${
+        let text = `${message !== '' ? `🧧 *Message: ${message}*\n\n` : ''}🔰 *Group:* ${
             M.groupMetadata.subject
-        }\n🔰 *Members:* ${M.groupMetadata.participants.length}\n📣 *init: @${
+        }\n🀄 *Members:* ${M.groupMetadata.participants.length}\n📢 *Init: @${
             M.sender.jid.split('@')[0]
-        }*\n💡 *Tags:* ${hidden ? '*[HIDDEN]*' : '\n'}`
+        }*\n🌀 *Tags:* ${hidden ? '*[HIDDEN]*' : '\n'}`
         const botJid = this.client.correctJid(this.client.user?.id || '')
         if (!hidden) {
-            text += `\n🌀 *@${modJid.split('@')[0]}*`
+            text += `\n🏮 *@${botJid.split('@')[0]}*`
             const mods: string[] = []
             const admins: string[] = []
             const members: string[] = []
