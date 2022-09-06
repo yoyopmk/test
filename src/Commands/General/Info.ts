@@ -29,17 +29,17 @@ module.exports = class command extends Command {
             return `${pad(hours)}:${pad(minutes)}:${pad(secs)}`
         }
         const uptime = formatTime(process.uptime())
-        const text = `🏮 *ZeroTwo* 🏮\n\n📙 *Description: This bot is in under construction The all game features will be released after 1 month*\n\n🔗 *Commands:* ${
+        const text = `🏮 *ZeroTwo* 🏮\n\n📙 *Description: This bot is in under construction*\n\n🧧 *Commands:* ${
             Array.from(this.handler.commands, ([command, data]) => ({
                 command,
                 data
             })).length
-        }\n\n🚦 *Uptime:* ${uptime}`
+        }\n\n🔰 *Uptime:* ${uptime}`
         return void (await this.client.sendMessage(
             M.from,
             {
                 image,
-                caption: Code 002,
+                caption: Code_002,
                 contextInfo: {
                     externalAdReply: {
                         title: ZeroTwo_Test,
