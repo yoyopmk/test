@@ -1,25 +1,24 @@
+import { join } from 'path'
 import { BaseCommand, Command, Message } from '../../Structures'
-import { IArgs } from '../../Types'
 
 @Command('help', {
-    description: "Displays the bot's usable commands",
-    aliases: ['h'],
-    cooldown: 10,
-    exp: 20,
+    description: "Displays bot's info",
+    aliases: 'h'
     usage: 'help || help <command_name>',
+    cooldown: 10,
+    exp: 20
     category: 'general'
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, { context }: IArgs): Promise<void> => {
-        if (!context) {
-            let commands = Array.from(this.handler.commands, ([command, data]) => ({
-                command,
-                data
-            })).filter((command) => command.data.config.category !== 'dev')
-            const { nsfw } = await this.client.DB.getGroup(M.from)
-            if (!nsfw) commands = commands.filter(({ data }) => data.config.category !== 'nsfw')
-            let text = `konnichiwa
-            
+    public override execute = async ({ reply }: Message): Promise<void> => {
+        const { description, name, homepage } = require(join(__dirname, '..', '..', '..', 'package.json')) as {
+            description: string
+            homepage: string
+            name: string
+        }
+        const image = this.client.assets.get('whatsapp-bot') as Buffer
+        const uptime = this.client.utils.formatSeconds(process.uptime())
+        const text = `konnichiwa
 *━━━━━『•Fun•』━━━━━*
 
 ⌬ ${this.client.config.prefix}friendship
@@ -66,11 +65,11 @@ export default class extends BaseCommand {
 ⌬ ${this.client.config.prefix}manga
 ⌬ ${this.client.config.prefix}neko
 ⌬ ${this.client.config.prefix}waifu
-
-
-📕 Note: Use ${this.client.config.prefix}help <command_name> for more info of a specific command. Example: ${this.client.config.prefix}help hello
 `
-            
-        }
+        return void (await reply(image, 'image', undefined, undefined, text, undefined, {
+            title: this.client.utils.capitalize(name),
+            thumbnail: image,
+            mediaType: 1,
+        }))
     }
 }
