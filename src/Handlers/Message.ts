@@ -109,7 +109,7 @@ export class MessageHandler {
       text,
       MessageType.text
     )
-  }
+  };
 
     public loadCommands = (): void => {
         this.client.log('Loading Commands...')
