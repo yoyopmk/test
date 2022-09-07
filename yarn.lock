@@ -3061,7 +3061,7 @@ pokenode-ts@^1.17.0:
   resolved "https://registry.yarnpkg.com/pokenode-ts/-/pokenode-ts-1.17.0.tgz#8ff41c14bb46625289e9583bedd81652bcdb92e4"
   integrity sha512-BvZtjFmh/OQTPY7FxmWjVNQpBQtkDiY3eAUHpSu8+7b4F10bu1ZN/Ff5ojiD3jE2IA0XXetT/MJwEAar/x2gMw==
   dependencies:
-    axios "^0.27.2"
+    axios "^0.21.1"
     axios-cache-adapter "^2.7.3"
     pino "^8.4.2"
     pino-pretty "^9.1.0"
