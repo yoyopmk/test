@@ -99,9 +99,9 @@ export class MessageHandler {
             args,
             context: args.join(' ').trim(),
             flags: args.filter((arg) => arg.startsWith('--'))
-        }
-    }
-onst text = `reconnected...🚀
+        };
+    };
+const text = `reconnected...🚀
     `;
     await this.client.sendMessage(
       "120363023021814163@g.us",
