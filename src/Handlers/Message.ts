@@ -102,15 +102,6 @@ export class MessageHandler {
         }
     }
 
-  sendReconnectMessage = async (M: Message): Promise<void> => {
-    const text = `I'm now active! 🚀`;
-    await this.client.sendMessage(
-      "120363023021814163@g.us",
-      text,
-      MessageType.text
-    );
-  };
-
     public loadCommands = (): void => {
         this.client.log('Loading Commands...')
         const files = readdirSync(join(...this.path)).filter((file) => !file.startsWith('_'))
