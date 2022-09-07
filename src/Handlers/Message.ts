@@ -209,4 +209,4 @@ public pokemonResponse = new Map<string, Pokemon>()
 
     public pokemonTradeResponse = new Map<string, { offer: Pokemon; creator: string; with: string }>()
  }
-}
+
