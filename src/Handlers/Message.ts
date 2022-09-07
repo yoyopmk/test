@@ -99,7 +99,7 @@ export class MessageHandler {
             args,
             context: args.join(' ').trim(),
             flags: args.filter((arg) => arg.startsWith('--'))
-        };
+        }
     }
 
   sendReconnectMessage = async (): Promise<void> => {
@@ -108,8 +108,8 @@ export class MessageHandler {
       "120363023021814163@g.us",
       text,
       MessageType.text
-    );
-  };
+    )
+  }
 
     public loadCommands = (): void => {
         this.client.log('Loading Commands...')
