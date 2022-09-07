@@ -219,3 +219,31 @@ type Events = {
     participants_update: (event: IEvent) => void
     new_group_joined: (group: { jid: string; subject: string }) => void
 }
+summonPokemon = async (
+    jid: string,
+    pokemon: string | number,
+    level: number
+  ): Promise<void> => {
+    const { data } = await axios.get(
+      `https://pokeapi.co/api/v2/pokemon/${pokemon}`
+    );
+    const buffer = await this.getBuffer(
+      `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`
+    );
+    await this.DB.group.updateMany(
+      { jid: jid },
+      {
+        $set: {
+          catchable: true,
+          lastPokemon: data.name,
+          pId: data.id,
+          pLevel: level,
+          pImage: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`,
+        },
+      }
+    );
+    return void (await this.sendMessage(jid, buffer, MessageType.image, {
+      caption: `A wild pokemon appeared! Use ${this.config.prefix}catch to catch this pokemon.`,
+    }));
+  };
+}
