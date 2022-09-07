@@ -92,6 +92,44 @@ export class MessageHandler {
             }
         }
     }
+  spawnPokemon = async (): Promise<void> => {
+    cron.schedule("*/2 * * * *", async () => {
+      const Data = await await this.client.getFeatures("pokemon");
+      if (Data.id === "000") return void null;
+      const p = Math.floor(Math.random() * Data.jids.length);
+      const q = await this.client.getGroupData(Data.jids[p]);
+      if (!q.wild || q.bot !== this.client.user.name) return void null;
+      const i = Math.floor(Math.random() * 898);
+      const y = Math.floor(Math.random() * 100);
+      const { data } = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${i}`
+      );
+      const buffer = await this.client.getBuffer(
+        `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`
+      );
+      await this.client.DB.group.updateMany(
+        { jid: Data.jids[p] },
+        {
+          $set: {
+            catchable: true,
+            lastPokemon: data.name,
+            pId: data.id,
+            pLevel: y,
+            pImage: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`,
+          },
+        }
+      );
+      await this.client.sendMessage(Data.jids[p], buffer, MessageType.image, {
+        caption: `A wild pokemon appeared! Use ${this.client.config.prefix}catch to catch this pokemon.`,
+      });
+      setTimeout(async () => {
+        await this.client.DB.group.updateOne(
+          { jid: Data.jids[p] },
+          { $set: { catchable: false } }
+        );
+      }, 500000);
+    });
+  };
 
     private formatArgs = (args: string[]): IArgs => {
         args.splice(0, 1)
