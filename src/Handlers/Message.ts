@@ -101,6 +101,7 @@ export class MessageHandler {
             flags: args.filter((arg) => arg.startsWith('--'))
         };
     };
+handleState = async (): Promise<void> => {
 const text = `reconnected...🚀
     `;
     await this.client.sendMessage(
