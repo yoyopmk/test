@@ -13,6 +13,9 @@ export class GroupSchema {
 
     @prop({ type: Boolean, required: true, default: false })
     public nsfw!: boolean
+    
+    @prop({ type: Boolean, required: true, default: false })
+    public wild!: boolean
 }
 
 export type TGroupModel = GroupSchema & Document
