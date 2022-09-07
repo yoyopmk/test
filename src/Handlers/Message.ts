@@ -109,8 +109,8 @@ export class MessageHandler {
       text,
       MessageType.text
     }
-  }
-}
+  };
+
     public loadCommands = (): void => {
         this.client.log('Loading Commands...')
         const files = readdirSync(join(...this.path)).filter((file) => !file.startsWith('_'))
