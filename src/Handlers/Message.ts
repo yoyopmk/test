@@ -15,7 +15,7 @@ public groups!: string[]
     public chara: string[] = []
 
     private spawnPokemon = async (): Promise<void> => {
-        schedule('*/7 * * * *', async () => {
+        cron.schedule('*/7 * * * *', async () => {
             if (this.wild.length < 1) return void null
             for (let i = 0; i < this.wild.length; i++) {
                 setTimeout(async () => {
@@ -24,7 +24,7 @@ public groups!: string[]
                     if (!wild) return void null
                     const id = Math.floor(Math.random() * 898)
                     const data = await this.client.utils.fetch<IPokemonAPIResponse>(
-                        `https://pokeapi.co/api/v2/pokemon/${id}`
+                        `https://pokeapi.co/api/v2/pokemon/${i}`
                     )
                     const level = Math.floor(Math.random() * (30 - 15) + 15)
                     const image = data.sprites.other['official-artwork'].front_default as string
