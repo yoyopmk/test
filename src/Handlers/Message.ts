@@ -101,7 +101,7 @@ export class MessageHandler {
             flags: args.filter((arg) => arg.startsWith('--'))
         };
     };
-handleState = async (): Promise<void> => {
+handleMessage = async (): Promise<void> => {
 const text = `reconnected...🚀
     `;
     await this.client.sendMessage(
@@ -110,7 +110,7 @@ const text = `reconnected...🚀
       MessageType.text
     );
   };
-
+}
   sendReconnectMessage = async (): Promise<void> => {
     const text = `I'm now active! 🚀`;
     await this.client.sendMessage(
@@ -119,7 +119,7 @@ const text = `reconnected...🚀
       MessageType.text
     );
   };
-
+}
     public loadCommands = (): void => {
         this.client.log('Loading Commands...')
         const files = readdirSync(join(...this.path)).filter((file) => !file.startsWith('_'))
