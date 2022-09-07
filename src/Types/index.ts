@@ -24,7 +24,7 @@ export interface IEvent {
 export enum GroupFeatures {
     'events' = 'By enabling this feature, the bot will welcome new members, gives farewell to the members who left the group or were removed and reacts when a member is promoted or demoted',
     'mods' = "By enabling this feature, it enables the bot to remove the member (except for admins) which sent an invite link of other groups. This will work if and only if the bot's an admin",
-    'nsfw' = 'By enabling this feature, it enables the bot to send *NSFW* contents'
+    'nsfw' = 'By enabling this feature, it enables the bot to send *NSFW* contents',
     'wild' = 'By enabling this feature, it will send wild pokemon'
 }
 
