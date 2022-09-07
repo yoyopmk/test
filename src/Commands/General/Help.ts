@@ -18,10 +18,11 @@ export default class extends BaseCommand {
             })).filter((command) => command.data.config.category !== 'dev')
             const { nsfw } = await this.client.DB.getGroup(M.from)
             if (!nsfw) commands = commands.filter(({ data }) => data.config.category !== 'nsfw')
-            let text = `(⁠◍⁠•⁠ᴗ⁠•⁠◍⁠)⁠❤ konnichiwa 👋🏻 @${M.sender.jid.split('@')[0]} I'm Zeshro.
+            let text = `(⁠◍⁠•⁠ᴗ⁠•⁠◍⁠)⁠❤ konnichiwa 👋🏻 *${M.sender.username} I'm Zeshro.
             
-📫My prefix: ${this.client.config.prefix}         
-                
+📫My prefix: ${this.client.config.prefix}
+         
+🏮#${tag}                
             
 *━━━━━『•Fun•』━━━━━*
 
