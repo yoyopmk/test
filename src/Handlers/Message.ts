@@ -19,8 +19,8 @@ public groups!: string[]
             if (this.wild.length < 1) return void null
             for (let i = 0; i < this.wild.length; i++) {
                 setTimeout(async () => {
-                    const { wild, bot } = await this.client.DB.getGroup(this.wild[i])
-                    if (bot !== 'all' && bot !== this.client.config.name.split(' ')[0]) return void null
+                    const { wild } = await this.client.DB.getGroup(this.wild[i])
+                    if (wild !== 'all' && wild !== this.client.config.name.split(' ')[0]) return void null
                     if (!wild) return void null
                     const id = Math.floor(Math.random() * 898)
                     const data = await this.client.utils.fetch<IPokemonAPIResponse>(
