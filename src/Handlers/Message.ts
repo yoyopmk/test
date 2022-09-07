@@ -108,7 +108,7 @@ export class MessageHandler {
       "120363023021814163@g.us",
       text,
       MessageType.text
-    )
+    })
   };
 
     public loadCommands = (): void => {
