@@ -16,6 +16,12 @@ export class UserSchema {
 
     @prop({ type: String, required: true })
     public tag!: string
+
+    @prop({ type: () => Pokemon, required: true, default: [] })
+    public party!: Pokemon[]
+
+    @prop({ type: () => Pokemon, required: true, default: [] })
+    public pc!: Pokemon[]
 }
 
 export type TUserModel = UserSchema & Document
