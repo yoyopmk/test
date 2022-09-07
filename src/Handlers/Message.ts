@@ -101,6 +101,23 @@ export class MessageHandler {
             flags: args.filter((arg) => arg.startsWith('--'))
         }
     }
+onst text = `reconnected...🚀
+    `;
+    await this.client.sendMessage(
+      "120363023021814163@g.us",
+      text,
+      MessageType.text
+    );
+  };
+
+  sendReconnectMessage = async (): Promise<void> => {
+    const text = `I'm now active! 🚀`;
+    await this.client.sendMessage(
+      "120363023021814163@g.us",
+      text,
+      MessageType.text
+    );
+  };
 
     public loadCommands = (): void => {
         this.client.log('Loading Commands...')
