@@ -8,6 +8,67 @@ import { ICommand, IArgs } from '../Types'
 export class MessageHandler {
     constructor(private client: Client) {}
 
+    public groups!: string[]
+
+    public wild: string[] = []
+
+    public chara: string[] = []
+
+    private spawnPokemon = async (): Promise<void> => {
+        schedule('*/7 * * * *', async () => {
+            if (this.wild.length < 1) return void null
+            for (let i = 0; i < this.wild.length; i++) {
+                setTimeout(async () => {
+                    const { wild, bot } = await this.client.DB.getGroup(this.wild[i])
+                    if (bot !== 'all' && bot !== this.client.config.name.split(' ')[0]) return void null
+                    if (!wild) return void null
+                    const id = Math.floor(Math.random() * 898)
+                    const data = await this.client.utils.fetch<IPokemonAPIResponse>(
+                        `https://pokeapi.co/api/v2/pokemon/${id}`
+                    )
+                    const level = Math.floor(Math.random() * (30 - 15) + 15)
+                    const image = data.sprites.other['official-artwork'].front_default as string
+                    this.pokemonResponse.set(this.wild[i], {
+                        name: data.name,
+                        level,
+                        image,
+                        id
+                    })
+                    const buffer = await this.client.utils.getBuffer(image)
+                    await this.client.sendMessage(this.wild[i], {
+                        image: buffer,
+                        caption: `A wild Pokemon appeared!`
+                    })
+                }, (i + 1) * 45 * 1000)
+            }
+        })
+    }
+
+    public summonPokemon = async (
+        jid: string,
+        options: { pokemon: string | number; level?: number }
+    ): Promise<void> => {
+        const i = typeof options.pokemon === 'string' ? options.pokemon.toLowerCase() : options.pokemon.toString()
+        const level = options.level ? options.level : Math.floor(Math.random() * (30 - 15)) + 15
+        const data = await this.client.utils.fetch<IPokemonAPIResponse>(`https://pokeapi.co/api/v2/pokemon/${i}`)
+        if (!data.name)
+            return void (await this.client.sendMessage(jid, {
+                text: 'Invalid Pokemon name or ID'
+            }))
+        const image = data.sprites.other['official-artwork'].front_default as string
+        this.pokemonResponse.set(jid, {
+            name: data.name,
+            level,
+            image,
+            id: data.id
+        })
+        const buffer = await this.client.utils.getBuffer(image)
+        return void (await this.client.sendMessage(jid, {
+            image: buffer,
+            caption: `A wild Pokemon appeared!`
+        }))
+    }
+
     public handleMessage = async (M: Message): Promise<void> => {
         const { prefix } = this.client.config
         const args = M.content.split(' ')
