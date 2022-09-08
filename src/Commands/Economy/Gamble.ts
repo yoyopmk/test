@@ -36,7 +36,7 @@ export default class command extends BaseCommand {
         }).build()
         await M.reply(sticker, 'sticker')
         const buttonMessage = {
-            text: result === direction ? `Congratulations 🎉 You won 🪙${amount}📉` : `Hahahaha You lost 🪙${amount} 📈`,
+            text: result === direction ? `Congratulations 🎉 You won 🪙${amount} 📉` : `Hahahaha You lost 🪙${amount} 📈`,
             footer: 'Eternity',
             buttons: buttons,
             headerType: 1
