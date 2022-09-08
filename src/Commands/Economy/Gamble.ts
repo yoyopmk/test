@@ -17,8 +17,16 @@ export default class command extends BaseCommand {
             return void M.reply(`Invalid usage! Example: *${this.client.config.prefix}gamble right 500*`)
         const amount = M.numbers[0]
         const { wallet } = await this.client.DB.getUser(M.sender.jid)
-        if ((wallet - amount) < 0) return void M.reply(`Check your wallet`)
+        if ((wallet - amount) < 0)return void M.reply(`Check your wallet`)
         const direction = args[1]
+        const direction = directions[Math.floor(Math.random() * directions.length)];
+    let gif!: string;
+    if (direction === "left") {
+      gif = "https://bestanimations.com/media/left/365059883left-arrow-18.gif";
+    } else if (direction === "right") {
+      gif =
+        "https://p14cdn4static.sharpschool.com/UserFiles/Servers/Server_1584893/Image/Buttons/right-arrow-31.gif";
+    }
         const buttons = [
             {
                 buttonId: 'id1',
@@ -29,8 +37,8 @@ export default class command extends BaseCommand {
         const result = directions[Math.floor(Math.random() * directions.length)]
         await this.client.DB.setGold(M.sender.jid, result === direction ? amount : -amount)
         const sticker = await new Sticker(this.client.assets.get(result) as Buffer, {
-            pack: '',
-            author: ``,
+            pack: 'Eternity',
+            author: `Eternity-001`,
             quality: 90,
             type: 'full'
         }).build()
