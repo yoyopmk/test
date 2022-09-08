@@ -12,10 +12,10 @@ import { Message, Command, BaseCommand } from '../../Structures'
 export default class extends BaseCommand {
     public override execute = async ({ reply }: Message): Promise<void> => {
         if (!this.client.config.mods.length) return void reply('*[UNMODERATED]*')
-        let text =" *🧧「ZISHIRO MODS」🧧*\n\n"
+        let text =" *🏮「 ZISHIRO MODS 」🏮*\n\n"
 
 this.client.config.mods.map((x)=>{
-text+= `*❯ @${this.client.contact.getContact(x).username}*\n`
+text+= `*🧧 @${this.client.contact.getContact(x).number}*\n`
 })
 
         return void (await reply(text))
