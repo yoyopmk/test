@@ -9,8 +9,7 @@
   
 <a href='https://github.com/Toshi-san001/Zerus/blob/master/LICENSE'>
   
-<img src='https://img.shields.io/github/license/Toshi-san001/Zerus?color=%231e81b0&style=for-the-badge'>
-  
+
 </a>
   
 </div>
