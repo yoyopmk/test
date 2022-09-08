@@ -18,7 +18,7 @@ export default class command extends BaseCommand {
             }
         ]
         const buttonMessage = {
-            text: `${bank}`,
+            text: `🏦 *Bank |🀄 Name:- ${M.sender.username}*\n\n🏮 *tag ${tag}*\n\n🪙 *Gold: ${bank}*`,
             footer: '',
             buttons: buttons,
             headerType: 1
@@ -26,6 +26,5 @@ export default class command extends BaseCommand {
         return void (await this.client.sendMessage(from, buttonMessage, {
             quoted: message
         }))
-await M.reply(text)
     }
 }
