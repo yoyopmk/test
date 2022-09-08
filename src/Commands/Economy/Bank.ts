@@ -26,5 +26,6 @@ export default class command extends BaseCommand {
         return void (await this.client.sendMessage(from, buttonMessage, {
             quoted: message
         }))
+await M.reply(text)
     }
 }
