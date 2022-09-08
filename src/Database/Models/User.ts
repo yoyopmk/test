@@ -1,26 +1,6 @@
 import { prop, getModelForClass } from '@typegoose/typegoose'
 import { Document } from 'mongoose'
 
-export class Pokemon {
-
-@prop({ type: String, required: true })
-    public name!: string
-
-    @prop({ type: String, required: true })
-    public image!: string
-
-    @prop({ type: Number, required: true })
-    public id!: number
-
-    @prop({ type: Number, required: true })
-    public level!: number
-}
-@modelOptions({
-    options: {
-        allowMixed: Severity.ALLOW
-    }
-})
-
 export class UserSchema {
     @prop({ type: String, required: true, unique: true })
     public jid!: string
@@ -36,12 +16,6 @@ export class UserSchema {
 
     @prop({ type: String, required: true })
     public tag!: string
-
-    @prop({ type: () => Pokemon, required: true, default: [] })
-    public party!: Pokemon[]
-
-    @prop({ type: () => Pokemon, required: true, default: [] })
-    public pc!: Pokemon[]
 }
 
 export type TUserModel = UserSchema & Document
