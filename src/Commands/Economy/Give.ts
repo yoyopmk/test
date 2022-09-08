@@ -17,7 +17,7 @@ export default class command extends BaseCommand {
         const user = users[0]
         const { wallet } = await this.client.DB.getUser(M.sender.jid)
         const amount = M.numbers[0]
-        if (amount > wallet) return void M.reply(`Check ur wallet`)
+        if ((wallet - amount) < 0) return void M.reply(`Check ur wallet`)
         await this.client.DB.setGold(M.sender.jid, -amount)
         await this.client.DB.setGold(user, amount)
         return void M.reply(`You gave *${amount}* to @${user.split('@')[0]}`, 'text', undefined, undefined, undefined, [
