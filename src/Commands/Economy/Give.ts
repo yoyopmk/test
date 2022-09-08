@@ -20,7 +20,7 @@ export default class command extends BaseCommand {
         if ((wallet - amount) < 0) return void M.reply(`Check ur wallet`)
         await this.client.DB.setGold(M.sender.jid, -amount)
         await this.client.DB.setGold(user, amount)
-        return void M.reply(`You gave *${amount}* to @${user.split('@')[0]}`, 'text', undefined, undefined, undefined, [
+        return void M.reply(`Whaooao You gave *🪙${amount} Gold* to @${user.split('@')[0]}`, 'text', undefined, undefined, undefined, [
             M.sender.jid,
             user
         ])
