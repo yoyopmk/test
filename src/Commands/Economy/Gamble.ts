@@ -17,7 +17,7 @@ export default class command extends BaseCommand {
             return void M.reply(`Invalid usage! Example: *${this.client.config.prefix}gamble right 500*`)
         const amount = M.numbers[0]
         const { wallet } = await this.client.DB.getUser(M.sender.jid)
-        if (amount > wallet) return void M.reply(`Check your wallet`)
+        if ((wallet - amount) < 0)return void M.reply(`Check your wallet`)
         const direction = args[1]
         const buttons = [
             {
