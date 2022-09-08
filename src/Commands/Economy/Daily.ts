@@ -36,8 +36,8 @@ export default class command extends BaseCommand {
             }
         ]
         const buttonMessage = {
-            text: '1000 gold has been claimed',
-            footer: '',
+            text: '*Congratulations 🎉 You have claimed Your Daily Gold*',
+            footer: '©Eternity',
             buttons: buttons,
             headerType: 1
         }
