@@ -27,7 +27,7 @@ export default class command extends BaseCommand {
             }
         ]
         const buttonMessage = {
-            text: `*🟩*You withdrew ${M.numbers[0]}* gold to ur wallet`,
+            text: `*🟩*You withdrew ${M.numbers[0]}*gold to ur wallet`,
             footer: 'Eternity',
             buttons: buttons,
             headerType: 1
