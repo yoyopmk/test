@@ -1,8 +1,8 @@
 import { BaseCommand, Command, Message } from '../../Structures'
 
 @Command('deposit', {
-    description: '',
-    usage: '',
+    description: 'Deposit your gold to bank',
+    usage: 'deposit',
     cooldown: 15,
     exp: 5,
     category: 'economy'
@@ -27,7 +27,7 @@ export default class command extends BaseCommand {
             }
         ]
         const buttonMessage = {
-            text: `🟩*You withdrew ${M.numbers[0]}* gold to ur wallet*`,
+            text: `*🎉 You have transferred ${M.numbers[0]}* gold to ur Bank*`,
             footer: 'Eternity',
             buttons: buttons,
             headerType: 1
