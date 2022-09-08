@@ -9,7 +9,6 @@ import { BaseCommand, Command, Message } from '../../Structures'
 })
 export default class command extends BaseCommand {
     override execute = async ({ from, sender, message }: Message): Promise<void> => {
-        const user = M.sender.jid;
         const { bank, tag } = await this.client.DB.getUser(sender.jid)
         const buttons = [
             {
@@ -19,7 +18,7 @@ export default class command extends BaseCommand {
             }
         ]
         const buttonMessage = {
-            text: `🏦 *Bank |🀄 Name:- ${M.sender.username}*\n\n🏮 *tag ${tag}*\n\n🪙 *Gold: ${bank}*`,
+            text: `🏦 *Bank |🀄 Name:- ${sender.username}*\n\n🏮 *tag ${tag}*\n\n🪙 *Gold: ${bank}*`,
             footer: '',
             buttons: buttons,
             headerType: 1
