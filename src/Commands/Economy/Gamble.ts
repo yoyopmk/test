@@ -19,14 +19,6 @@ export default class command extends BaseCommand {
         const { wallet } = await this.client.DB.getUser(M.sender.jid)
         if ((wallet - amount) < 0)return void M.reply(`Check your wallet`)
         const direction = args[1]
-        const direction = directions[Math.floor(Math.random() * directions.length)];
-    let gif!: string;
-    if (direction === "left") {
-      gif = "https://bestanimations.com/media/left/365059883left-arrow-18.gif";
-    } else if (direction === "right") {
-      gif =
-        "https://p14cdn4static.sharpschool.com/UserFiles/Servers/Server_1584893/Image/Buttons/right-arrow-31.gif";
-    }
         const buttons = [
             {
                 buttonId: 'id1',
@@ -44,8 +36,8 @@ export default class command extends BaseCommand {
         }).build()
         await M.reply(sticker, 'sticker')
         const buttonMessage = {
-            text: result === direction ? `You won ${amount}` : `You lost ${amount}`,
-            footer: '',
+            text: result === direction ? `Congratulations 🎉 You won 🪙${amount}📉` : `Hahahaha You lost 🪙${amount} 📈`,
+            footer: 'Eternity',
             buttons: buttons,
             headerType: 1
         }
