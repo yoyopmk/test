@@ -2933,6 +2933,11 @@ parse5@^7.0.0:
   dependencies:
     entities "^4.3.0"
 
+parse-ms-js@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/parse-ms-js/-/parse-ms-js-1.2.0.tgz"
+  integrity sha512-Gh74GTDbkZxfnXE+/HHsgVPQ1TwE8DQuMQXzwdik2LJcDAIaXpTI0MeY5WWVBoZK8A6bM2Pm/3yeNGVpuMvN5g==
+
 parseurl@~1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.3.tgz#9da19e7bee8d12dff0513ed5b76957793bc2e8d4"
