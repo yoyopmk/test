@@ -28,6 +28,7 @@ interface ICommandConfig {
     exp?: number
     /**Can be used in dm? */
     dm?: boolean
+    casino?: boolean
     /**Cooldown of the command */
     cooldown?: number
 }
