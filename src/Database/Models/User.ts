@@ -17,6 +17,9 @@ export class UserSchema {
     @prop({ type: String, required: true })
     public tag!: string
     
+    @prop({ type: Boolean, required: true, default: false })
+    public wild!: boolean
+
     @prop({ type: Number, required: true, default: 0 })
     public wallet!: number
 
