@@ -1,7 +1,7 @@
 import { prop, getModelForClass } from '@typegoose/typegoose'
 import { Document } from 'mongoose'
 
-export class GroupSchema {
+export class Group {
     @prop({ type: String, unique: true, required: true })
     public jid!: string
 
@@ -13,8 +13,20 @@ export class GroupSchema {
 
     @prop({ type: Boolean, required: true, default: false })
     public nsfw!: boolean
+
+    @prop({ type: Boolean, required: true, default: false })
+    public wild!: boolean
+
+    @prop({ type: Boolean, required: true, default: false })
+    public news!: string
+
+    @prop({ type: String, required: true, default: 'all' })
+    public bot!: string
+
+    @prop({ type: Boolean, required: true, default: false })
+    public chara!: boolean
 }
 
-export type TGroupModel = GroupSchema & Document
+export type TGroupModel = Group & Document
 
-export const groupSchema = getModelForClass(GroupSchema)
+export const groupSchema = getModelForClass(Group)
