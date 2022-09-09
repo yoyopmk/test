@@ -9,9 +9,10 @@ import {
     TGroupModel,
     TSessionModel,
     TUserModel,
-    UserSchema,
-    GroupSchema
+    User,
+    Group
 } from '../Database'
+import moment from 'moment-timezone'
 import { Utils } from '../lib'
 
 export class Database {
@@ -30,26 +31,30 @@ export class Database {
 
     public updateUser = async (
         jid: string,
-        field: keyof UserSchema,
+        field: keyof User,
         method: 'inc' | 'set',
-        update: UserSchema[typeof field]
+        update: User[typeof field]
     ): Promise<void> => {
         await this.getUser(jid)
         await this.user.updateOne({ jid }, { [`$${method}`]: { [field]: update } })
     }
 
+    public setGold = async (jid: string, gold: number, field: 'wallet' | 'bank' = 'wallet'): Promise<void> => {
+        await this.updateUser(jid, field, 'inc', gold)
+    }
+
+    public removeUser = async (jid: string): Promise<void> => {
+        await this.user.deleteOne({ jid })
+    }
+
     public getGroup = async (jid: string): Promise<TGroupModel> =>
         (await this.group.findOne({ jid })) || (await new this.group({ jid }).save())
 
-    public updateGroup = async (jid: string, field: keyof GroupSchema, update: boolean): Promise<void> => {
+    public updateGroup = async (jid: string, field: keyof Group, update: boolean | string): Promise<void> => {
         await this.getGroup(jid)
         await this.group.updateOne({ jid }, { $set: { [field]: update } })
     }
 
-     public setGold = async (jid: string, gold: number, field: 'wallet' | 'bank' = 'wallet'): Promise<void> => {
-        await this.updateUser(jid, field, 'inc', gold)
-    }
-    
     public getSession = async (sessionId: string): Promise<TSessionModel | null> =>
         await this.session.findOne({ sessionId })
 
@@ -66,14 +71,14 @@ export class Database {
     }
 
     public getContacts = async (): Promise<Contact[]> => {
-        let result = await this.contact.findOne({ ID: 'contacts' })
-        if (!result) result = await new this.contact({ ID: 'contacts' }).save()
+        const result = (await this.contact.findOne({ ID: 'contacts' })) || (await new this.contact({ ID: 'contacts' }))
         return result.data
     }
 
     public getDisabledCommands = async (): Promise<TCommandModel['disabledCommands']> => {
-        let result = await this.disabledCommands.findOne({ title: 'commands' })
-        if (!result) result = await new this.disabledCommands({ title: 'commands' }).save()
+        const result =
+            (await this.disabledCommands.findOne({ title: 'commands' })) ||
+            (await new this.disabledCommands({ title: 'commands' }).save())
         return result.disabledCommands
     }
 
@@ -94,5 +99,3 @@ export class Database {
 
     public disabledCommands = disabledCommandsSchema
 }
-
-type valueof<T> = T[keyof T]
