@@ -22,6 +22,14 @@
   resolved "https://registry.yarnpkg.com/@adiwajshing/keyed-db/-/keyed-db-0.2.4.tgz#2a09e88fce20b2672deb60a7750c5fe3ab0dfd99"
   integrity sha512-yprSnAtj80/VKuDqRcFFLDYltoNV8tChNwFfIgcf6PGD4sjzWIBgs08pRuTqGH5mk5wgL6PBRSsMCZqtZwzFEw==
 
+anime-quiz@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/anime-quiz/-/anime-quiz-3.0.0.tgz#4a1c5dcb091498d6d3e74b78d4cf06ef5df677bf"
+  integrity sha512-ANQXM0tZIw+DeOYjp0yv34eQ+5LmMeAaNCR42Lq1yJc1wofzWPTNePSvee4sSQ6w8QAdawc170jEsQXh0plPiA==
+  dependencies:
+    fs-extra "^10.1.0"
+    path "^0.12.7"
+
 "@canvacord/assets@^2.0.5":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@canvacord/assets/-/assets-2.1.0.tgz#4d11644256dadcd47ac11cf59ae3d42d7ef30be2"
