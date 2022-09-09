@@ -15,7 +15,7 @@ export default class extends BaseCommand {
         const features = Object.keys(GroupFeatures) as (keyof typeof GroupFeatures)[]
         if (!flags.length) {
             const sections: proto.ISection[] = []
-            let text = '💮 *Available Features* 💮'
+            let text = '🍁 *Available Features*'
             for (const feature of features) {
                 const rows: proto.IRow[] = []
                 rows.push(
@@ -74,6 +74,10 @@ export default class extends BaseCommand {
                         action === 'true' ? 'Enabled' : 'Disabled'
                     }*`
                 )
+            if (feature === 'wild' || feature === 'chara')
+                action === 'true'
+                    ? this.handler[feature].push(M.from)
+                    : this.handler[feature].splice(this.handler[feature].indexOf(M.from), 1)
             await this.client.DB.updateGroup(M.from, feature, action === 'true')
             return void M.reply(
                 `${action === 'true' ? '🟩' : '🟥'} *${this.client.utils.capitalize(feature)} is now ${
