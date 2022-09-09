@@ -1,8 +1,9 @@
-import Baileys, { GroupMetadata, ParticipantAction } from '@adiwajshing/baileys'
+import Baileys, { ParticipantAction, GroupMetadata } from '@adiwajshing/baileys'
 
 export * from './Config'
 export * from './Command'
 export * from './Message'
+export * from './Pokemon'
 
 export interface IContact {
     jid: string
@@ -14,6 +15,19 @@ export interface ISender extends IContact {
     isAdmin: boolean
 }
 
+export interface IGroup extends GroupMetadata {
+    admins?: string[]
+}
+
+export interface ICall {
+    content: {
+        attrs: {
+            'call-creator': string
+        }
+        tag: string
+    }[]
+}
+
 export interface IEvent {
     jid: string
     participants: string[]
@@ -23,11 +37,10 @@ export interface IEvent {
 export enum GroupFeatures {
     'events' = 'By enabling this feature, the bot will welcome new members, gives farewell to the members who left the group or were removed and reacts when a member is promoted or demoted',
     'mods' = "By enabling this feature, it enables the bot to remove the member (except for admins) which sent an invite link of other groups. This will work if and only if the bot's an admin",
-    'nsfw' = 'By enabling this feature, it enables the bot to send *NSFW* contents'
-    }
-
-export interface IGroup extends GroupMetadata {
-    admins?: string[]
+    'nsfw' = 'By enabling this feature, it enables the bot to send *NSFW* contents',
+    'news' = 'By enabling this feature, it will send news',
+    'wild' = 'By enabling this feature, it will send wild pokemon',
+    'chara' = 'By enabling this feature, it will send characters'
 }
 
 export type client = ReturnType<typeof Baileys>
