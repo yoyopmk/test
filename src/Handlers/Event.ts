@@ -2,9 +2,10 @@ import chalk from 'chalk'
 import { delay } from '@adiwajshing/baileys'
 import { Client } from '../Structures'
 import { IEvent } from '../Types'
+import { MessageHandler } from '.'
 
 export class EventHandler {
-    constructor(private client: Client) {}
+    constructor(private client: Client, private handler: MessageHandler) {}
 
     public handleEvents = async (event: IEvent): Promise<void> => {
         let group: { subject: string; description: string } = {
@@ -74,6 +75,7 @@ export class EventHandler {
 
     public sendMessageOnJoiningGroup = async (group: { subject: string; jid: string }): Promise<void> => {
         this.client.log(`${chalk.blueBright('JOINED')} ${chalk.cyanBright(group.subject)}`)
+        this.handler.groups.push(group.jid)
         return void (await this.client.sendMessage(group.jid, {
             text: `Thanks for adding me in this group. Please use *${this.client.config.prefix}help* to get started.`
         }))
