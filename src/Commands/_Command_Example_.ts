@@ -3,7 +3,7 @@ import { IArgs } from '../Types'
 
 @Command('command_name', {
     description: 'Description of the command',
-    Tcategory: 'Tcategory',
+    category: 'Tcategory',
     usage: 'example on using the command',
     cooldown: 5,
     exp: 10,
