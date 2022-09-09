@@ -16,21 +16,27 @@ export interface ICommand {
 }
 
 interface ICommandConfig {
-    /**Description of the command */
-    description: string
-    /**An example on how the command should be used */
-    usage: string
-    /**Category of the command */
     category: TCategory
-    /**Aliases of the command */
+    description: string
+    usage: string
+    cooldown?: number
     aliases?: string[]
-    /**Experience to be gained by using this command */
     exp?: number
-    /**Can be used in dm? */
     dm?: boolean
     casino?: boolean
-    /**Cooldown of the command */
-    cooldown?: number
+    adminRequired?: boolean
 }
 
-export type TCategory = 'dev' | 'economy' | 'general' | 'weeb' | 'utils' | 'fun' | 'moderation' | 'media'  | 'economy' | 'category' | 'nsfw'
+export type TCategory =
+    | 'dev'
+    | 'fun'
+    | 'games'
+    | 'nsfw'
+    | 'utils'
+    | 'pokemon'
+    | 'moderation'
+    | 'weeb'
+    | 'general'
+    | 'media'
+    | 'economy'
+    | 'characters'
