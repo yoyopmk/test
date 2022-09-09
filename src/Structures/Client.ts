@@ -2,51 +2,46 @@ import chalk from 'chalk'
 import { config as Config } from 'dotenv'
 import EventEmitter from 'events'
 import TypedEventEmitter from 'typed-emitter'
-import Baileys, {
-    DisconnectReason,
-    fetchLatestBaileysVersion,
-    ParticipantAction,
-    proto,
-    WACallEvent
-} from '@adiwajshing/baileys'
+import Baileys, { DisconnectReason, fetchLatestBaileysVersion, ParticipantAction, proto } from '@adiwajshing/baileys'
 import P from 'pino'
 import { connect } from 'mongoose'
 import { Boom } from '@hapi/boom'
 import qr from 'qr-image'
 import { Utils } from '../lib'
-import { Database, Contact, Message, AuthenticationFromDatabase, Server } from '.'
-import { IConfig, client, IEvent } from '../Types'
+import { Database, Contact, Message, Server, AuthenticationFromDatabase } from '.'
+import { Pokemon } from '../Database'
+import { IConfig, client, IEvent, ICall } from '../Types'
 
-export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>) implements client {
+export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>) {
     private client!: client
     constructor() {
         super()
         Config()
         this.config = {
-            name: process.env.BOT_NAME || 'Bot',
-            session: process.env.SESSION || 'SESSION',
-            prefix: process.env.PREFIX || ':',
-            mods: (process.env.MODS || '').split(', ').map((user) => `${user}@s.whatsapp.net`),
-            PORT: Number(process.env.PORT || 3000)
+            name: '.',
+            session: 'S',
+            prefix: ':',
+            mods: [],
+            PORT: Number(process.env.PORT || Math.floor(Math.random() * (9000 - 3000) + 3000)),
+            casinoGroup: '',
+            adminsGroup: '',
+            supportGroups: [],
+            dbUri: ''
         }
         new Server(this)
     }
 
     public start = async (): Promise<client> => {
-        if (!process.env.MONGO_URI) {
-            throw new Error('No MongoDB URI provided')
-        }
-        await connect(process.env.MONGO_URI)
+        await connect(this.config.dbUri)
         this.log('Connected to the Database')
         const { useDatabaseAuth } = new AuthenticationFromDatabase(this.config.session)
         const { saveState, state, clearState } = await useDatabaseAuth()
-        const { version } = await fetchLatestBaileysVersion()
         this.client = Baileys({
-            version,
+            version: (await fetchLatestBaileysVersion()).version,
             printQRInTerminal: true,
             auth: state,
             logger: P({ level: 'fatal' }),
-            browser: ['ZERUS', 'fatal', '4.0.0'],
+            browser: ['Shooting-Star', 'fatal', '4.0.0'],
             getMessage: async (key) => {
                 return {
                     conversation: ''
@@ -57,11 +52,12 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
         })
         for (const method of Object.keys(this.client))
             this[method as keyof Client] = this.client[method as keyof client]
-        this.ev.on('call', (call) => this.emit('new_call', call[0]))
+        this.ws.on('CB:call', (call: ICall) => this.emit('new_call', { from: call.content[0].attrs['call-creator'] }))
         this.ev.on('contacts.update', async (contacts) => await this.contact.saveContacts(contacts))
         this.ev.on('messages.upsert', async ({ messages }) => {
             const M = new Message(messages[0], this)
-            if (M.type === 'protocolMessage' || M.type === 'senderKeyDistributionMessage') return void null
+            if ((M.type === 'protocolMessage' || M.type === 'senderKeyDistributionMessage') && M.content === '')
+                return void null
             if (M.stubType && M.stubParameters) {
                 const emitParticipantsUpdate = (action: ParticipantAction): boolean =>
                     this.emit('participants_update', {
@@ -118,6 +114,7 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
             if (connection === 'open') {
                 this.condition = 'connected'
                 this.log('Connected to WhatsApp')
+                this.emit('open')
             }
         })
         this.ev.on('creds.update', saveState)
@@ -132,20 +129,23 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
 
     public contact = new Contact(this)
 
+    public getAllGroups = async (): Promise<string[]> => Object.keys(await this.groupFetchAllParticipating())
+
     public correctJid = (jid: string): string => `${jid.split('@')[0].split(':')[0]}@s.whatsapp.net`
 
     public assets = new Map<string, Buffer>()
 
     public log = (text: string, error: boolean = false): void =>
-        console.log(
-            chalk[error ? 'red' : 'blue'](`[${this.config.name.toUpperCase()}]`),
-            chalk[error ? 'redBright' : 'greenBright'](text)
-        )
+        console.log(chalk[error ? 'red' : 'blue']('[BOT]'), chalk[error ? 'redBright' : 'greenBright'](text))
 
     public QR!: Buffer
 
     public condition!: 'connected' | 'connecting' | 'logged_out'
 
+    public appPatch!: client['appPatch']
+    public assertSessions!: client['assertSessions']
+    public authState!: client['authState']
+    public chatModify!: client['chatModify']
     public end!: client['end']
     public ev!: client['ev']
     public fetchBlocklist!: client['fetchBlocklist']
@@ -186,7 +186,6 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
     public sendMessageAck!: client['sendMessageAck']
     public sendNode!: client['sendNode']
     public sendRawMessage!: client['sendRawMessage']
-    public sendReadReceipt!: client['sendReadReceipt']
     public sendRetryRequest!: client['sendRetryRequest']
     public sendMessage!: client['sendMessage']
     public sendPresenceUpdate!: client['sendPresenceUpdate']
@@ -203,19 +202,19 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
     public waitForSocketOpen!: client['waitForSocketOpen']
     public waitForConnectionUpdate!: client['waitForConnectionUpdate']
     public waUploadToServer!: client['waUploadToServer']
-    public getPrivacyTokens!: client['getPrivacyTokens']
-    public assertSessions!: client['assertSessions']
-    public processingMutex!: client['processingMutex']
-    public appPatch!: client['appPatch']
-    public authState!: client['authState']
-    public upsertMessage!: client['upsertMessage']
-    public updateProfileStatus!: client['updateProfileStatus']
-    public chatModify!: client['chatModify']
 }
 
 type Events = {
-    new_call: (call: WACallEvent) => void
+    new_call: (call: { from: string }) => void
     new_message: (M: Message) => void
     participants_update: (event: IEvent) => void
     new_group_joined: (group: { jid: string; subject: string }) => void
+    open: () => void
+    pokemon_levelled_up: (data: {
+        M: Message
+        pokemon: Pokemon
+        inBattle: boolean
+        player: 'player1' | 'player2'
+        user: string
+    }) => void
 }
