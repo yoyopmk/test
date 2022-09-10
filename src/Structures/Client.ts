@@ -26,7 +26,7 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
             casinoGroup: '',
             adminsGroup: '',
             supportGroups: [],
-            dbUri: ''
+            dbUri: process.env.MONGO_URI
         }
         new Server(this)
     }
