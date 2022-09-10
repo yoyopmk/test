@@ -19,7 +19,7 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
         Config()
         this.config = {
             name: '.',
-            session: 'S',
+            session: process.env.session || 'S',
             prefix: ':',
             mods: [],
             PORT: Number(process.env.PORT || Math.floor(Math.random() * (9000 - 3000) + 3000)),
