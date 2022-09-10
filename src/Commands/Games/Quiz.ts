@@ -16,7 +16,7 @@ export default class extends BaseCommand {
         this.handler.quiz.quizResponse.set(M.from, quiz)
         this.handler.quiz.failed.set(M.from, [])
         let text = ''
-        text += `🎀 *Question: ${quiz.question}*\n\n`
+        text += `🎉 *Question: ${quiz.question}*\n\n`
         for (let i = 0; i < quiz.options.length; i++) text += `*${i + 1}) ${quiz.options[i]}*\n`
         text += `\n🧧 *Use ${this.client.config.prefix}answer <option_number> to answer this question.*`
         text += `\n\n📒 *Note: You only have 60 seconds to answer.*`
