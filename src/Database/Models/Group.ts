@@ -18,6 +18,9 @@ export class Group {
     public wild!: boolean
 
     @prop({ type: Boolean, required: true, default: false })
+    public cards!: string
+
+    @prop({ type: Boolean, required: true, default: false })
     public news!: string
 
     @prop({ type: String, required: true, default: 'all' })
