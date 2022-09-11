@@ -26,13 +26,13 @@ export default class extends BaseCommand {
                     by: 'experience',
                     order: 'desc'
                 })
-        let text = `🧧 *GLOBAL LEADERBOARD* 🧧\n`
+        let text = `🏮 *GLOBAL LEADERBOARD* 🏮\n`
         const n = users.length < 10 ? users.length : 10
         for (let i = 0; i < n; i++) {
             let { username } = this.client.contact.getContact(users[i].jid)
             text += `\n*#${i + 1}*\n*🏮Username:* ${username}#${users[i].tag}\n*⭐Experience:* ${
                 users[i].experience
-            }\n*🏅Rank:* ${getStats(users[i].level).rank}\n*🏦Money:* ${users[i].wallet + users[i].bank}\n*🀄Pokemon:* ${
+            }\n*🎉Rank:* ${getStats(users[i].level).rank}\n*🪙Gold:* ${users[i].wallet + users[i].bank}\n*💮Pokemon:* ${
                 users[i].party.length + users[i].pc.length
             }\n`
         }
