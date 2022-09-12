@@ -16,18 +16,6 @@ export class Pokemon {
     public level!: number
 }
 
-export class Card {
-    @prop({ type: String, required: true })
-    public name!: string
-
-    @prop({ type: String, required: true })
-    public image!: string
-
-    @prop({ type: Number, required: true })
-    public tier!: number
-
-}
-
 @modelOptions({
     options: {
         allowMixed: Severity.ALLOW
@@ -116,9 +104,6 @@ export class User {
 
     @prop({ type: () => Gallery, required: true, default: [] })
     public gallery!: Gallery[]
-
-    @prop({ type: () => Card, required: true, default: [] })
-    public collection!: Card[]
 }
 
 export type TUserModel = User & Document
