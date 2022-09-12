@@ -74,7 +74,7 @@ export default class extends BaseCommand {
                         action === 'true' ? 'Enabled' : 'Disabled'
                     }*`
                 )
-            if (feature === 'wild' || feature === 'chara' || feature === 'cards')
+            if (feature === 'wild' || feature === 'chara')
                 action === 'true'
                     ? this.handler[feature].push(M.from)
                     : this.handler[feature].splice(this.handler[feature].indexOf(M.from), 1)
