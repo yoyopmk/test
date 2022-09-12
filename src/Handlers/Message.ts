@@ -89,6 +89,7 @@ export class MessageHandler {
                 M.sender.username
             )} in ${chalk.blueBright(title)}`
         )
+try {
         const { bot } = await this.client.DB.getGroup(M.from)
         const commands = ['switch', 'hello', 'hi']
         const { banned, tag } = await this.client.DB.getUser(M.sender.jid)
@@ -133,7 +134,7 @@ export class MessageHandler {
         const exp = command.config.exp ?? 10
         await this.client.DB.setExp(M.sender.jid, exp)
         await this.handleUserStats(M)
-        try {
+        
             await command.execute(M, this.formatArgs(args))
         } catch (error) {
             this.client.log((error as any).message, true)
