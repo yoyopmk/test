@@ -131,8 +131,9 @@ try {
             )
         } else this.cooldowns.set(`${M.sender.jid}${command.name}`, time)
         setTimeout(() => this.cooldowns.delete(`${M.sender.jid}${command.name}`), cooldownAmount)
-        const exp = command.config.exp ?? 10
-        await this.client.DB.setExp(M.sender.jid, exp)
+        await this.client.DB.setExp(M.sender.jid, command.config.exp || 10)
+        //const exp = command.config.exp ?? 10
+        //await this.client.DB.setExp(M.sender.jid, exp)
         await this.handleUserStats(M)
         
             await command.execute(M, this.formatArgs(args))
