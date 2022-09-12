@@ -47,11 +47,8 @@ export class Database {
         await this.user.deleteOne({ jid })
     }
 
-    public getGroup = async (jid: string): Promise<TGroupModel> =>{
-try{
+    public getGroup = async (jid: string): Promise<TGroupModel> =>
         (await this.group.findOne({ jid })) || (await new this.group({ jid }).save())
-}catch(e){ console.error(e) }
-        }
 
     public updateGroup = async (jid: string, field: keyof Group, update: boolean | string): Promise<void> => {
         await this.getGroup(jid)
