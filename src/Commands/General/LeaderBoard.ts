@@ -3,7 +3,7 @@ import { IArgs, IGroup } from '../../Types'
 import { getStats } from '../../lib'
 
 @Command('leaderboard', {
-    description: '',
+    description: 'Shows all users leaderboard',
     category: 'general',
     usage: 'leaderboard',
     exp: 10,
