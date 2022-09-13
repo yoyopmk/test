@@ -40,6 +40,4 @@ export default class command extends BaseCommand {
         }\n\n*Quiz Wins:* ${info.quizWins}\n\n*Admin:* ${admin}\n\n*Banned:* ${ban || 'False'}`
         return void (await reply(pfp, 'image', undefined, undefined, text))
     }
-return void M.reply(text)
-  }
 }
