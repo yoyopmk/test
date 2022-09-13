@@ -93,8 +93,8 @@ try {
         const { bot } = await this.client.DB.getGroup(M.from)
         const commands = ['switch', 'hello', 'hi']
         const { banned, tag } = await this.client.DB.getUser(M.sender.jid)
-        if (!tag)
-            await this.client.DB.updateUser(M.sender.jid, 'tag', 'set', this.client.utils.generateRandomUniqueTag())
+        //if (!tag)
+           // await this.client.DB.updateUser(M.sender.jid, 'tag', 'set', this.client.utils.generateRandomUniqueTag())
         const cmd = args[0].toLowerCase().slice(prefix.length)
         if (bot != this.client.config.name.split(' ')[0] && bot !== 'all' && !commands.includes(cmd)) return void null
         if (banned) return void M.reply(`You are banned from using commands`)
@@ -134,7 +134,7 @@ try {
         //await this.client.DB.setExp(M.sender.jid, command.config.exp || 10)
         //const exp = command.config.exp ?? 10
         //await this.client.DB.setExp(M.sender.jid, exp)
-        await this.handleUserStats(M)
+       // await this.handleUserStats(M)
         
             await command.execute(M, this.formatArgs(args))
         } catch (error) {
