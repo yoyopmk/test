@@ -69,7 +69,7 @@ export class MessageHandler {
         const buffer = await this.client.utils.getBuffer(image)
         return void (await this.client.sendMessage(jid, {
             image: buffer,
-            caption: `A wild Pokemon appeared!`
+            caption: `A wild Pokemon appeared! [Use ${this.client.config.prefix}catch <pokémom_name> to catch it]`
         }))
     }
 
@@ -204,7 +204,7 @@ try {
                             ]
                             const buttonMessage = {
                                 image: buffer,
-                                caption: `*A claimable character Appeared!*\n\n🏮 *Name: ${chara.name}*\n\n📑 *About:* ${chara.about}\n\n🌐 *Source: ${source}*\n\n💰 *Price: ${price}*\n\n*[Use ${this.client.config.prefix}claim to have this character in your gallery]*`,
+                                caption: `*A claimable character Appeared!*\n\n🏮 *Name: ${chara.name}*\n\n📑 *About:* ${chara.about}\n\n💮 *Source: ${source}*\n\n🪙 *Price: ${price}*\n\n*[Use ${this.client.config.prefix}claim to have this character in your gallery]*`,
                                 footer: '',
                                 buttons: buttons,
                                 headerType: 4
