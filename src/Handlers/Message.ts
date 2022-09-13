@@ -41,7 +41,7 @@ export class MessageHandler {
                     const buffer = await this.client.utils.getBuffer(image)
                     await this.client.sendMessage(this.wild[i], {
                         image: buffer,
-                        caption: `A wild Pokemon appeared!`
+                        caption: `A wild Pokemon appeared! [Use ${this.client.config.prefix}catch <pokémom_name> to catch it]`
                     })
                 }, (i + 1) * 45 * 1000)
             }
