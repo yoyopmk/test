@@ -29,9 +29,9 @@ export default class extends BaseCommand {
             for (const category of categories) {
                 const categoryCommands: string[] = []
                 const filteredCommands = commands.filter((command) => command.data.config.category === category)
-                text += `\n\n*━━━❰ ${this.client.utils.capitalize(category)} ❱━━━*\n\n`
+                text += `\n\n*▬▬〖･${this.client.utils.capitalize(category)}•〗▬▬*\n\n`
                 filteredCommands.forEach((command) => categoryCommands.push(command.data.name))
-                text += `\`\`\`${categoryCommands.join(', ')}\`\`\``
+                text += `\`\`\`🌀${categoryCommands.join(', ')}\`\`\``
             }
             text += `\n\n📕 *Note:* Use ${this.client.config.prefix}help <command_name> for more info of a specific command. Example: *${this.client.config.prefix}help hello*`
             return void (await M.reply(text, 'text', undefined, undefined, undefined, [M.sender.jid]))
