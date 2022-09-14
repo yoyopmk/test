@@ -18,7 +18,7 @@ export default class extends BaseCommand {
             })).filter((command) => command.data.config.category !== 'dev')
             const { nsfw } = await this.client.DB.getGroup(M.from)
             if (!nsfw) commands = commands.filter(({ data }) => data.config.category !== 'nsfw')
-            let text = `👋🏻 (❤️ω❤️) Konichiwa! *@${M.sender.jid.split('@')[0]}*, I'm ${
+            let text = `👋🏻 (💙ω💙) Konichiwa! *@${M.sender.jid.split('@')[0]}*, I'm ${
                 this.client.config.name
             }\nMy prefix is - "${this.client.config.prefix}"\n\nThe usable commands are listed below.`
             const categories: string[] = []
@@ -29,25 +29,29 @@ export default class extends BaseCommand {
             for (const category of categories) {
                 const categoryCommands: string[] = []
                 const filteredCommands = commands.filter((command) => command.data.config.category === category)
-                text += `\n\n*▬▬〖･${this.client.utils.capitalize(category)}•〗▬▬*\n\n`
+                text += `\n\n*━━━❰ ${this.client.utils.capitalize(category)} ❱━━━*\n\n`
                 filteredCommands.forEach((command) => categoryCommands.push(command.data.name))
-                text += `\`\`\`🌀${categoryCommands.join(', ')}\`\`\``;
-      const sections = [
-    {
-	title: "Section 1",
-	rows: [
-	    {title: "${this.client.config.prefix}help", rowId: "help"},
-	    {title: "Option 2", rowId: "option2", description: "This is a description"}
-	]
-    },
-   {
-	title: "Section 2",
-	rows: [
-	    {title: "Option 3", rowId: "option3"},
-	    {title: "Option 4", rowId: "option4", description: "This is a description V2"}
-	]
-    },
-}
+                text += `\`\`\`${categoryCommands.join(', ')}\`\`\``
+            }
+const sections: proto.ISection[] = []
+            let text = '🍁 *Available Features*'
+            for (const feature of features) {
+                const rows: proto.IRow[] = []
+                rows.push(
+                    {
+                        title: `Enable ${this.client.utils.capitalize(category)}`,
+                        rowId: `${this.client.config.prefix}set --${feature}=true`
+                    },
+                    {
+                        title: `Disable ${this.client.utils.capitalize(category)}`,
+                        rowId: `${this.client.config.prefix}help`
+                    }
+                )
+                sections.push({ title: this.client.utils.capitalize(category)}, rows })
+                text += `\n\n ${this.client.utils.capitalize(category)}\n ${
+                    Commands list[feature]
+                }`
+            }
             text += `\n\n📕 *Note:* Use ${this.client.config.prefix}help <command_name> for more info of a specific command. Example: *${this.client.config.prefix}help hello*`
             return void (await M.reply(text, 'text', undefined, undefined, undefined, [M.sender.jid]))
         } else {
@@ -68,4 +72,4 @@ export default class extends BaseCommand {
             )
         }
     }
-]
+}
