@@ -29,7 +29,7 @@ export default class extends BaseCommand {
                     }
                 )
                 sections.push({ title: this.client.utils.capitalize(feature), rows })
-                text += `\n\n☘ *Feature:* ${this.client.utils.capitalize(feature)}\n📄 *Description:* ${
+                text += `\n\n💮 *Feature:* ${this.client.utils.capitalize(feature)}\n🌀 *Description:* ${
                     GroupFeatures[feature]
                 }`
             }
