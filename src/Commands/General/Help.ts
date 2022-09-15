@@ -15,9 +15,8 @@ export default class extends BaseCommand {
             let commands = Array.from(this.handler.commands, ([command, data]) => ({
                 command,
                 data
-             
             })).filter((command) => command.data.config.category !== 'dev')
-            "https://media.tenor.com/videos/571d88ea5d66e7b95cdbc4ef6029dd95/mp4";
+            const ZeroTwo = "https://media.tenor.com/videos/571d88ea5d66e7b95cdbc4ef6029dd95/mp4";
             const { nsfw } = await this.client.DB.getGroup(M.from)
             if (!nsfw) commands = commands.filter(({ data }) => data.config.category !== 'nsfw')
             let text = `🎉Hi there! 👋🏻 _@${M.sender.jid.split('@')[0]}_, I'm ${
@@ -34,20 +33,25 @@ export default class extends BaseCommand {
                 text += `\n\n*▬▬▬〖･${this.client.utils.capitalize(category)}･〗▬▬▬*\n\n`
                 filteredCommands.forEach((command) => categoryCommands.push(command.data.name))
                 text += `🎐${categoryCommands.join(', ')}`
-            }
+        return void this.client.sendMessage(
+        M.from,
+        { url: zerotwo },
+        MessageType.video,
+        {
+          quoted: M.WAMessage,
+          mimetype: Mimetype.gif,
+          caption: `${text} 📝 *Note: Use ${this.client.config.prefix}help <command_name> to view the command info*`,
+          contextInfo: { mentionedJid: [user] },
+        }
+      );
+    }
             text += `\n\n🎉 *Note:* Use ${this.client.config.prefix}help <command_name> for more info of a specific command. Example: *${this.client.config.prefix}help hello*`
             return void (await M.reply(text, 'text', undefined, undefined, undefined, [M.sender.jid]))
         } else {
             const cmd = context.trim().toLowerCase()
             const command = this.handler.commands.get(cmd) || this.handler.aliases.get(cmd)
             if (!command) return void M.reply(`No command found | *"${context.trim()}"*`)
-            const url = {"https://telegra.ph/file/b189543e6db4147f1d82e.mp4"}
-            return void (
-                await M.reply(
-                    await this.client.utils.gifToMp4(await this.client.utils.getBuffer(url)),
-                    'video',
-                    true,
-                    undefined,
+            return void M.reply(
                 `🎐 *Command:* ${this.client.utils.capitalize(command.name)}\n🎴 *Aliases:* ${
                     !command.config.aliases
                         ? ''
@@ -58,7 +62,7 @@ export default class extends BaseCommand {
                     .split('||')
                     .map((usage) => `${this.client.config.prefix}${usage.trim()}`)
                     .join(' | ')}\n🧧 *Description:* ${command.config.description}`
-            ))
+            )
         }
     }
 }
