@@ -16,9 +16,9 @@ export default class extends BaseCommand {
                 command,
                 data
             })).filter((command) => command.data.config.category !== 'dev')
-            const url = "https://telegra.ph/file/b189543e6db4147f1d82e.mp4";
             const { nsfw } = await this.client.DB.getGroup(M.from)
             if (!nsfw) commands = commands.filter(({ data }) => data.config.category !== 'nsfw')
+            const buffer = await this.client.utils.getBuffer('https://telegra.ph/file/b189543e6db4147f1d82e.mp4')
             let text = `🎉Hi there! 👋🏻 _@${M.sender.jid.split('@')[0]}_, I'm ${
                 this.client.config.name
             }\n\n prefix - "${this.client.config.prefix}"\n\n.📝 *Note:* This is my usable menu list and I'm here to to help with my menu list.`
@@ -35,13 +35,13 @@ export default class extends BaseCommand {
                 text += `🎐${categoryCommands.join(', ')}`
             }
             text += `\n\n🎉 *Note:* Use ${this.client.config.prefix}help <command_name> for more info of a specific command. Example: *${this.client.config.prefix}help hello*`
-            return void (await M.reply(text, 'text', undefined, undefined, undefined, [M.sender.jid]))
+            return void (await M.reply(buffer, 'video', true, undefined, text, [M.sender.jid]))
         } else {
             const cmd = context.trim().toLowerCase()
             const command = this.handler.commands.get(cmd) || this.handler.aliases.get(cmd)
             if (!command) return void M.reply(`No command found | *"${context.trim()}"*`)
             return void M.reply(
-                `🍁 *Command:* ${this.client.utils.capitalize(command.name)}\n🌀 *Aliases:* ${
+                `🎐 *Command:* ${this.client.utils.capitalize(command.name)}\n🎴 *Aliases:* ${
                     !command.config.aliases
                         ? ''
                         : command.config.aliases.map((alias) => this.client.utils.capitalize(alias)).join(', ')
