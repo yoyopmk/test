@@ -18,7 +18,7 @@ export default class extends BaseCommand {
             })).filter((command) => command.data.config.category !== 'dev')
             const { nsfw } = await this.client.DB.getGroup(M.from)
             if (!nsfw) commands = commands.filter(({ data }) => data.config.category !== 'nsfw')
-            const buffer = await this.client.utils.getBuffer('https://telegra.ph/file/b189543e6db4147f1d82e.mp4')
+            const buffer = await this.client.utils.getBuffer('https://telegra.ph/file/f70cd80c046e6cb945f8e.mp4')
             let text = `🎉Hi there! 👋🏻 _@${M.sender.jid.split('@')[0]}_, I'm ${
                 this.client.config.name
             }\n\n prefix - "${this.client.config.prefix}"\n\n.📝 *Note:* This is my usable menu list and I'm here to to help with my menu list.`
