@@ -34,7 +34,7 @@ export default class extends BaseCommand {
                 filteredCommands.forEach((command) => categoryCommands.push(command.data.name))
                 text += `🎐${categoryCommands.join(', ')}`
             }
-            text += `•━━━━━ ✽ • ✽ ━━━━━•`
+            text += `\n\n•━━━━━ ✽ • ✽ ━━━━━•`
             return void (await M.reply(buffer, 'video', true, undefined, text, [M.sender.jid]))
         } else {
             const cmd = context.trim().toLowerCase()
