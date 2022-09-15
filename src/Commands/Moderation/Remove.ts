@@ -24,7 +24,7 @@ export default class command extends BaseCommand {
                 continue
             }
             await this.client.groupParticipantsUpdate(M.from, [user], 'remove')
-            text += `Promoted: @${user.split('@')[0]}`
+            text += `successfully ✅ Removed @${user.split('@')[0]}`
         }
         return void M.reply(text, 'text', undefined, undefined, undefined, mentioned)
     }
