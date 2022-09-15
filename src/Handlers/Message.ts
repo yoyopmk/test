@@ -28,7 +28,7 @@ export class MessageHandler {
                     if (!wild) return void null
                     const id = Math.floor(Math.random() * 898)
                     const data = await this.client.utils.fetch<IPokemonAPIResponse>(
-                        `https://pokeapi.co/api/v2/pokemon/${id}`
+                        `https://shoob.gg/cards/${id}`
                     )
                     const level = Math.floor(Math.random() * (30 - 15) + 15)
                     const image = data.sprites.other['official-artwork'].front_default as string
@@ -54,7 +54,7 @@ export class MessageHandler {
     ): Promise<void> => {
         const i = typeof options.pokemon === 'string' ? options.pokemon.toLowerCase() : options.pokemon.toString()
         const level = options.level ? options.level : Math.floor(Math.random() * (30 - 15)) + 15
-        const data = await this.client.utils.fetch<IPokemonAPIResponse>(`https://pokeapi.co/api/v2/pokemon/${i}`)
+        const data = await this.client.utils.fetch<IPokemonAPIResponse>(`https://shoob.gg/cards/${i}`)
         if (!data.name)
             return void (await this.client.sendMessage(jid, {
                 text: 'Invalid Pokemon name or ID'
