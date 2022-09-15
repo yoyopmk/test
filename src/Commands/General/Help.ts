@@ -40,7 +40,7 @@ export default class extends BaseCommand {
         {
           quoted: M.WAMessage,
           mimetype: Mimetype.gif,
-          caption: `${text} 📝 *Note: Use ${this.client.config.prefix}help <command_name> to view the command info*`,
+          caption: ``,
           contextInfo: { mentionedJid: [user] },
         }
       );
