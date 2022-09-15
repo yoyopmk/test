@@ -15,6 +15,7 @@ export default class extends BaseCommand {
             let commands = Array.from(this.handler.commands, ([command, data]) => ({
                 command,
                 data
+            const void = "https://media.tenor.com/videos/571d88ea5d66e7b95cdbc4ef6029dd95/mp4";
             })).filter((command) => command.data.config.category !== 'dev')
             const { nsfw } = await this.client.DB.getGroup(M.from)
             if (!nsfw) commands = commands.filter(({ data }) => data.config.category !== 'nsfw')
