@@ -21,12 +21,12 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
             name: 'Zerotwo',
             session: process.env.SESSION || 'S',
             prefix: ':',
-            mods: ['919609900020'],
+            mods: ['+919609900020'],
             PORT: Number(process.env.PORT || Math.floor(Math.random() * (9000 - 3000) + 3000)),
             casinoGroup: '',
             adminsGroup: '',
             supportGroups: [],
-            dbUri: process.env.MONGO_URI || 'mongodb+srv://chey:K77iYsuTRyJ4TgXf@cluster0.wtlbba3.mongodb.net/?retryWrites=true&w=majority'
+            dbUri: process.env.MONGO_URI || ''
         }
         new Server(this)
     }
