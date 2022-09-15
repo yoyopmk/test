@@ -16,7 +16,7 @@ export default class extends BaseCommand {
                 command,
                 data
             })).filter((command) => command.data.config.category !== 'dev')
-            const ZeroTwo = "https://media.tenor.com/videos/571d88ea5d66e7b95cdbc4ef6029dd95/mp4";
+            const url = {"https://telegra.ph/file/b189543e6db4147f1d82e.mp4"}
             const { nsfw } = await this.client.DB.getGroup(M.from)
             if (!nsfw) commands = commands.filter(({ data }) => data.config.category !== 'nsfw')
             let text = `🎉Hi there! 👋🏻 _@${M.sender.jid.split('@')[0]}_, I'm ${
