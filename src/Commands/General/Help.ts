@@ -20,7 +20,7 @@ export default class extends BaseCommand {
             if (!nsfw) commands = commands.filter(({ data }) => data.config.category !== 'nsfw')
             let text = `🎉Hi there! 👋🏻 _@${M.sender.jid.split('@')[0]}_, I'm *${
                 this.client.config.name*
-            }\n prefix - "${this.client.config.prefix}"\n\nThe usable commands are listed below.`
+            }\n prefix - "${this.client.config.prefix}"\n\n📝 *Note* This is my usable menu list and I'm here to to help with my menu list.`
             const categories: string[] = []
             for (const command of commands) {
                 if (categories.includes(command.data.config.category)) continue
