@@ -15,7 +15,7 @@ export default class extends BaseCommand {
         let text =" *▬▬▬〖･BOT MODS･〗▬▬▬*\n\n"
 
 this.client.config.mods.map((x)=>{
-text+= `*❯ @${this.client.contact.getUsername(x).Contact}*\n`
+text+= `*❯ @${this.client.contact.getContact(x).username}*\n`
 })
 
         return void (await reply(text))
