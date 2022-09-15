@@ -41,7 +41,13 @@ export default class extends BaseCommand {
             const cmd = context.trim().toLowerCase()
             const command = this.handler.commands.get(cmd) || this.handler.aliases.get(cmd)
             if (!command) return void M.reply(`No command found | *"${context.trim()}"*`)
-            return void M.reply(
+            const url = {"https://telegra.ph/file/b189543e6db4147f1d82e.mp4"}
+            return void (
+                await M.reply(
+                    await this.client.utils.gifToMp4(await this.client.utils.getBuffer(url)),
+                    'video',
+                    true,
+                    undefined,
                 `🎐 *Command:* ${this.client.utils.capitalize(command.name)}\n🎴 *Aliases:* ${
                     !command.config.aliases
                         ? ''
@@ -52,7 +58,7 @@ export default class extends BaseCommand {
                     .split('||')
                     .map((usage) => `${this.client.config.prefix}${usage.trim()}`)
                     .join(' | ')}\n🧧 *Description:* ${command.config.description}`
-            )
+            ))
         }
     }
 }
