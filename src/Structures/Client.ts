@@ -20,7 +20,7 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
         this.config = {
             name: 'ZeroTwo',
             session: process.env.SESSION || 'S',
-            prefix: ':',
+            prefix: '+',
             mods: ['919609900020@s.whatsapp.net'],
             PORT: Number(process.env.PORT || Math.floor(Math.random() * (9000 - 3000) + 3000)),
             casinoGroup: '120363042386835331@g.us',
