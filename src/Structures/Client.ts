@@ -18,7 +18,7 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
         super()
         Config()
         this.config = {
-            name: 'Code002-Zerotwo',
+            name: 'ZeroTwo',
             session: process.env.SESSION || 'S',
             prefix: ':',
             mods: ['919609900020@s.whatsapp.net'],
