@@ -39,11 +39,9 @@ export class EventHandler {
             return void null
         const text =
             event.action === 'add'
-                ? `- ${group.subject} -\n\n🏮 *Group Description:*\n${
-                      group.description
-                  }\n\nHope you follow the rules and have fun!\n\n*‣ ${event.participants
+                ? `Well, ${event.participants
                       .map((jid) => `@${jid.split('@')[0]}`)
-                      .join(' ')}*`
+                      .join(' ')}* it's about time you arrived!`
                 : event.action === 'remove'
                 ? `Goodbye *${event.participants
                       .map((jid) => `@${jid.split('@')[0]}`)
