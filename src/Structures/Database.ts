@@ -17,7 +17,7 @@ import { Utils } from '../lib'
 
 export class Database {
     public getUser = async (jid: string): Promise<TUserModel> =>
-        (await this.user.findOne({ jid })) ||
+        (await this.user.findOne({ jid })) ??
         (await new this.user({ jid, tag: this.utils.generateRandomUniqueTag() }).save())
 
     public setExp = async (jid: string, experience: number): Promise<void> => {
