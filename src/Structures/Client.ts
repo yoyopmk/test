@@ -24,7 +24,7 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
             mods: ['919609900020@s.whatsapp.net'],
             PORT: Number(process.env.PORT || Math.floor(Math.random() * (9000 - 3000) + 3000)),
             casinoGroup: '120363042386835331@g.us',
-            adminsGroup: '120363042386835331@g.us',
+            adminsGroup: '"120363044143266775@g.us"',
             supportGroups: [],
             dbUri: process.env.MONGO_URI || ''
         }
