@@ -40,30 +40,15 @@ export class EventHandler {
         const text =
             event.action === 'add'
                 ? `Well, ${event.participants
-                      .map((jid) => `@${jid.split('@')[0]}`)
+                      .map((jid) => `*@${jid.split('@')[0]}`)
                       .join(' ')}* it's about time you arrived!`
                 : event.action === 'remove'
-                ? `Goodbye *${event.participants
+                ? `Bye bye basically *${event.participants
                       .map((jid) => `@${jid.split('@')[0]}`)
-                      .join(', ')}* 👋🏻, we're probably not gonna miss you.`
+                      .join(', ')}* we really not gonna miss you`
                 : event.action === 'demote'
-                ? `Lol 😂 someone Demoted *@${event.participants[0].split('@')[0]}*`
+                ? `Someone Demoted *@${event.participants[0].split('@')[0]}*`
                 : `Someone Promoted *@${event.participants[0].split('@')[0]}*, as admin`
-        if (event.action === 'add') {
-            let imageUrl: string | undefined
-            try {
-                imageUrl = await this.client.profilePictureUrl(event.jid)
-            } catch (error) {
-                imageUrl = undefined
-            }
-            const image = imageUrl
-                ? await this.client.utils.getBuffer(imageUrl)
-                : (this.client.assets.get('404') as Buffer)
-            return void (await this.client.sendMessage(event.jid, {
-                image: image,
-                mentions: event.participants,
-                caption: text
-            }))
         }
         return void (await this.client.sendMessage(event.jid, {
             text,
