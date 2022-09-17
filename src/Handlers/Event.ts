@@ -39,7 +39,7 @@ export class EventHandler {
             return void null
         const text =
             event.action === 'add'
-                ? `- ${group.subject} -\n\n💈 *Group Description:*\n${
+                ? `- ${group.subject} -\n\n🏮 *Group Description:*\n${
                       group.description
                   }\n\nHope you follow the rules and have fun!\n\n*‣ ${event.participants
                       .map((jid) => `@${jid.split('@')[0]}`)
@@ -49,8 +49,8 @@ export class EventHandler {
                       .map((jid) => `@${jid.split('@')[0]}`)
                       .join(', ')}* 👋🏻, we're probably not gonna miss you.`
                 : event.action === 'demote'
-                ? `Ara Ara, looks like *@${event.participants[0].split('@')[0]}* got Demoted`
-                : `Congratulations *@${event.participants[0].split('@')[0]}*, you're now an admin`
+                ? `Lol 😂 someone Demoted *@${event.participants[0].split('@')[0]}*`
+                : `Someone Promoted *@${event.participants[0].split('@')[0]}*, as admin`
         if (event.action === 'add') {
             let imageUrl: string | undefined
             try {
