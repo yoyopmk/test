@@ -33,11 +33,11 @@ export default class command extends BaseCommand {
         } catch (error) {
             bio = ''
         }
-        const text = `*Username:* ${username}#${info.tag}\n\n*Bio:* ${bio}\n\n*XP:* ${
+        const text = `🌀 *Username:* ${username}#${info.tag}\n\n☘️ *Bio:* ${bio}\n\n🎐 *XP:* ${
             info.experience || 0
-        }\n\n*Rank:* ${rank}\n\n*Haigusha:* ${haigusha}\n\n*Pokemon:* ${
+        }\n\n🍁 *Rank:* ${rank}\n\n🏮 *Haigusha:* ${haigusha}\n\n💮 *Pokemon:* ${
             info.party.length + info.pc.length
-        }\n\n*Quiz Wins:* ${info.quizWins}\n\n*Admin:* ${admin}\n\n*Banned:* ${ban || 'False'}`
+        }\n\n*Quiz Wins:* ${info.quizWins}\n\n👑 *Admin:* ${admin}\n\n⭐ *Banned:* ${ban || 'False'}`
         return void (await reply(pfp, 'image', undefined, undefined, text))
     }
 }
