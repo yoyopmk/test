@@ -32,20 +32,7 @@ export default class extends BaseCommand {
                 text += `\n\n*━━━❰ ${this.client.utils.capitalize(category)} ❱━━━*\n\n`
                 filteredCommands.forEach((command) => categoryCommands.push(command.data.name))
                 text += `\`\`\`${categoryCommands.join(', ')}\`\`\``
-            }
-                const sections: proto.ISection[] = []
-            const rows: proto.IRow[] = []
-                rows.push(
-                    {
-                        title: `help`,
-                        rowId: `${this.client.config.prefix}help`
-                    },
-                    {
-                        title: `info`,
-                        rowId: `${this.client.config.prefix}info`
-                    }
-                )
-            sections.push({ title: ${this.client.utils.capitalize(category)}, rows })
+            }    
             text += `\n\n📕 *Note:* Use ${this.client.config.prefix}help <command_name> for more info of a specific command. Example: *${this.client.config.prefix}help hello*`
             return void (await M.reply(text, 'text', undefined, undefined, undefined, [M.sender.jid]))
         } else {
