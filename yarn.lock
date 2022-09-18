@@ -3250,15 +3250,15 @@ png-js@^1.0.0:
   resolved "https://registry.yarnpkg.com/png-js/-/png-js-1.0.0.tgz#e5484f1e8156996e383aceebb3789fd75df1874d"
   integrity sha512-k+YsbhpA9e+EFfKjTCH3VW6aoKlyNYI6NYdTfDL4CIvFnvsuO84ttonmZE7rc+v23SLTH8XX+5w/Ak9v0xGY4g==
 
-pokenode-ts@^1.14.0:
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/pokenode-ts/-/pokenode-ts-1.16.0.tgz#e67e1e5550b1cc69ad14cf55b521cda1846de6eb"
+pokenode-ts@^1.17.0:
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/pokenode-ts/-/pokenode-ts-1.17.0.tgz#e67e1e5550b1cc69ad14cf55b521cda1846de6eb"
   integrity sha512-D4QL1vtlW0jtttqCKV+h0q825PG++sbUxnHgMEfPuenZf3IRNrc+jCp24FNdvYMyt3avurEwJcW33U4A6FUSuA==
   dependencies:
     axios "^0.27.2"
     axios-cache-adapter "^2.7.3"
-    pino "^8.1.0"
-    pino-pretty "^8.1.0"
+    pino "^8.4.2"
+    pino-pretty "^9.1.0"
     tslib "^2.4.0"
 
 prebuild-install@^7.1.1:
