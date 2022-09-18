@@ -9,7 +9,7 @@ import { BaseCommand, Command, Message } from '../../Structures'
     cooldown: 5
 })
 export default class extends BaseCommand {
-    public override execute = async ({ sender, reply }: Message): Promise<void> =>
+    public override execute = async ({ sender, reply }: Message): Promise<void> => {
                   const buttons = [
                                 {
                                     buttonId: `${this.client.config.prefix}help`,
