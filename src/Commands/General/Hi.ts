@@ -10,29 +10,15 @@ import { BaseCommand, Command, Message } from '../../Structures'
 })
 export default class extends BaseCommand {
     public override execute = async ({ sender, reply }: Message): Promise<void> =>
-const button = [{
-                buttonId: '+help',
-                buttonText: {
-                    displayText: 'Help'
-                },
-                type: 1
-            },
-            {
-                buttonId: '+info',
-                buttonText: {
-                    displayText: 'Info'
-                },
-                type: 1
-            }
-        ]
-    let buttonMessaged = {
-        text: `Hello`,
-        footer: 'Zerotwo',
-        buttons: button,
-        headerType: 1
-    }
-    await this.client.sendMessage(from, buttonMessaged, {
-        quoted: M
-    })
+    const button = [
+            {buttonId: '+help', buttonText: {displayText: 'Help'}, type: 1},
+            {buttonId: '+info', buttonText: {displayText: 'Info'}, type: 1}
+            ]
+            let buttonMessaged = {
+                   text: `Baileys Button Test ✅`,
+                    footer: ‘Baileys',
+                    buttons: button,
+                    headerType: 4
+                }
        void (await reply(`Hello! *${sender.username}* Darling`))
 }
