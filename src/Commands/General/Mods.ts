@@ -22,4 +22,4 @@ mentions.push(M.from)
         return void (await this.client.sendMessage(M.from,{
           text, mentions
     }))
-}
+}}
