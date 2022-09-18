@@ -24,6 +24,6 @@ export default class extends BaseCommand {
                                 headerType: 4
                             }
                           void (await this.client.sendMessage(from, buttonMessage))
-                        })
+                        });
        //void (await reply(`Hello! *${sender.username}* Darling`))
 }
