@@ -16,7 +16,7 @@ export default class extends BaseCommand {
             ]
             let buttonMessaged = {
                    text: `Baileys Button Test ✅`,
-                    footer: ‘Baileys',
+                    footer: 'Baileys',
                     buttons: button,
                     headerType: 4
                 }
