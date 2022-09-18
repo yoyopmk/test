@@ -20,16 +20,16 @@ export default class extends BaseCommand {
                 const rows: proto.IRow[] = []
                 rows.push(
                     {
-                        title: `Enable ${this.client.utils.capitalize(feature)}`,
+                        title: `Enable ${categoryCommands.join(', ')}`,
                         rowId: `${this.client.config.prefix}set --${feature}=true`
                     },
                     {
-                        title: `Disable ${this.client.utils.capitalize(feature)}`,
+                        title: `${categoryCommands.join(', ')}`,
                         rowId: `${this.client.config.prefix}set --${feature}=false`
                     }
                 )
                 sections.push({ title: this.client.utils.capitalize(feature), rows })
-                text += `\n\n💮 *Feature:* ${this.client.utils.capitalize(feature)}\n🌀 *Description:* ${
+                text += `\n\n💮 *Feature:* ${this.client.utils.capitalize(category)}\n🌀 *Description:* ${
                     GroupFeatures[feature]
                 }`
             }
