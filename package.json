@@ -1,7 +1,7 @@
 {
-  "name": "Zerus",
+  "name": "ZeroTwo",
   "version": "0.0.1",
-  "description": "A WhatsApp bot written in TypeScript using Baileys",
+  "description": "Hey Darling I'm ZeroTwo Bot and i was written in typescript using Bailyes",
   "author": "Toshi_sama",
   "main": "dist/bot.js",
   "keywords": [
