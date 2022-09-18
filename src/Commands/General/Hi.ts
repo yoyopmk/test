@@ -26,8 +26,8 @@ const button = [{
             }
         ]
     let buttonMessaged = {
-        text: `Baileys Button Test ✅`,
-        footer: 'Baileys',
+        text: `Hello`,
+        footer: 'Zerotwo',
         buttons: button,
         headerType: 1
     }
