@@ -37,12 +37,12 @@ export default class extends BaseCommand {
             const rows: proto.IRow[] = []
                 rows.push(
                     {
-                        title: `Enable ${categoryCommands.join(', ')}`,
-                        rowId: `${this.client.config.prefix}set --${feature}=true`
+                        title: `help`,
+                        rowId: `${this.client.config.prefix}help`
                     },
                     {
-                        title: `${categoryCommands.join(', ')}`,
-                        rowId: `${this.client.config.prefix}set --${feature}=false`
+                        title: `info`,
+                        rowId: `${this.client.config.prefix}info`
                     }
                 )
             text += `\n\n📕 *Note:* Use ${this.client.config.prefix}help <command_name> for more info of a specific command. Example: *${this.client.config.prefix}help hello*`
