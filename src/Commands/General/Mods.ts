@@ -10,7 +10,7 @@ import { Message, Command, BaseCommand } from '../../Structures'
     aliases: ['mod', 'owner', 'moderators']
 })
 export default class extends BaseCommand {
-    public override execute = async ({ reply }: Message): Promise<void> => {
+    public override execute = async (M: Message): Promise<void> => {
         if (!this.client.config.mods.length) return void reply('*[UNMODERATED]*')
         let text =" *▬▬▬〖･BOT MODS･〗▬▬▬*\n\n"
 let mentions:string[] = []
