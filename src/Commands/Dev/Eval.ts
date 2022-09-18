@@ -13,9 +13,10 @@ export default class extends BaseCommand {
         try {
             const result = eval(context)
             out = JSON.stringify(result, null, '\t') || 'Evaluated JavaScript'
+            return void M.reply(out)
         } catch (error) {
-            out = (error as any).message
+            console.error(error)
         }
-        return void M.reply(out)
+        
     }
 }
