@@ -39,16 +39,33 @@ export class EventHandler {
             return void null
         const text =
             event.action === 'add'
-                ? `Well, ${event.participants
-                      .map((jid) => `*@${jid.split('@')[0]}`)
-                      .join(' ')}* it's about time you arrived!`
-                : event.action === 'remove'
-                ? `Bye bye basically *${event.participants
+                ? `- ${group.subject} -\n\n💈 *Group Description:*\n${
+                      group.description
+                  }\n\nHope you follow the rules and have fun!\n\n*‣ ${event.participants
                       .map((jid) => `@${jid.split('@')[0]}`)
-                      .join(', ')}* we really not gonna miss you`
+                      .join(' ')}*`
+                : event.action === 'remove'
+                ? `Goodbye *${event.participants
+                      .map((jid) => `@${jid.split('@')[0]}`)
+                      .join(', ')}* 👋🏻, we're probably not gonna miss you.`
                 : event.action === 'demote'
-                ? `Someone Demoted *@${event.participants[0].split('@')[0]}*`
-                : `Someone Promoted *@${event.participants[0].split('@')[0]}*, as admin`
+                ? `Ara Ara, looks like *@${event.participants[0].split('@')[0]}* got Demoted`
+                : `Congratulations *@${event.participants[0].split('@')[0]}*, you're now an admin`
+        if (event.action === 'add') {
+            let imageUrl: string | undefined
+            try {
+                imageUrl = await this.client.profilePictureUrl(event.jid)
+            } catch (error) {
+                imageUrl = undefined
+            }
+            const image = imageUrl
+                ? await this.client.utils.getBuffer(imageUrl)
+                : (this.client.assets.get('404') as Buffer)
+            return void (await this.client.sendMessage(event.jid, {
+                image: image,
+                mentions: event.participants,
+                caption: text
+            }))
         }
         return void (await this.client.sendMessage(event.jid, {
             text,
