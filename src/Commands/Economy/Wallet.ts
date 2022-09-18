@@ -23,8 +23,6 @@ export default class command extends BaseCommand {
             buttons: buttons,
             headerType: 1
         }
-        return void (await this.client.sendMessage(from, buttonMessage, {
-            quoted: message
-        }))
+        return void (await this.client.sendMessage(from, buttonMessage))
     }
 }
