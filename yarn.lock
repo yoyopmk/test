@@ -3252,8 +3252,8 @@ png-js@^1.0.0:
 
 pokenode-ts@^1.17.0:
   version "1.17.0"
-  resolved "https://registry.yarnpkg.com/pokenode-ts/-/pokenode-ts-1.17.0.tgz#e67e1e5550b1cc69ad14cf55b521cda1846de6eb"
-  integrity sha512-D4QL1vtlW0jtttqCKV+h0q825PG++sbUxnHgMEfPuenZf3IRNrc+jCp24FNdvYMyt3avurEwJcW33U4A6FUSuA==
+  resolved "https://registry.npmjs.org/pokenode-ts/-/pokenode-ts-1.17.0.tgz"
+  integrity sha512-BvZtjFmh/OQTPY7FxmWjVNQpBQtkDiY3eAUHpSu8+7b4F10bu1ZN/Ff5ojiD3jE2IA0XXetT/MJwEAar/x2gMw==
   dependencies:
     axios "^0.27.2"
     axios-cache-adapter "^2.7.3"
