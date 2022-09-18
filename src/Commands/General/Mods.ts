@@ -16,7 +16,7 @@ export default class extends BaseCommand {
         let mentions = []
 this.client.config.mods.map((x)=>{
 text+= `*❯ @${M.sender.jid.split('@')[0]}*\n`
-mentioned.push(M.from)
+mentions.push(M.from)
 })
 
         return void (await this.client.sendMessage(M.from,{
