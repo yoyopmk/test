@@ -45,6 +45,7 @@ export default class extends BaseCommand {
                         rowId: `${this.client.config.prefix}info`
                     }
                 )
+            sections.push({ title: ${this.client.utils.capitalize(category)}, rows })
             text += `\n\n📕 *Note:* Use ${this.client.config.prefix}help <command_name> for more info of a specific command. Example: *${this.client.config.prefix}help hello*`
             return void (await M.reply(text, 'text', undefined, undefined, undefined, [M.sender.jid]))
         } else {
