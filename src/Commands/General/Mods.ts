@@ -13,12 +13,12 @@ export default class extends BaseCommand {
     public override execute = async ({ reply }: Message): Promise<void> => {
         if (!this.client.config.mods.length) return void reply('*[UNMODERATED]*')
         let text =" *▬▬▬〖･BOT MODS･〗▬▬▬*\n\n"
-        let mentions:string[]= []
+let mentions:string[] = []
 this.client.config.mods.map((x)=>{
-const jid = this.client.contact.getContact(x).jid
-text+= `*❯ @${jid.split('@')[0]}*\n`
-mentions.push(jid)
+text+= `*❯ @${this.client.contact.getContact(x).jid.split('@')[0]}*\n`
+mentions.push(this.client.contact.getContact(x).jid)
 })
 
-        return void (await this.client.sendMessage(M.from,{text,mentions}))
-}}
+        return void this.client.sendMessage(M.from,{text:text, mentions:mentions})
+    }
+}
