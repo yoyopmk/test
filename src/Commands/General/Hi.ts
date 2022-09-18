@@ -1,4 +1,8 @@
-import { BaseCommand, Command, Message } from '../../Structures'
+import {
+    BaseCommand,
+    Command,
+    Message
+} from '../../Structures'
 
 @Command('hi', {
     description: 'Says hello to the bot',
@@ -9,6 +13,33 @@ import { BaseCommand, Command, Message } from '../../Structures'
     cooldown: 5
 })
 export default class extends BaseCommand {
-    public override execute = async ({ sender, reply }: Message): Promise<void> =>
-        void (await reply(`Hello! *${sender.username}* Darling`))
+    public override execute = async ({
+            sender,
+            reply
+        }: Message): Promise < void > =>
+        const button = [{
+                buttonId: '+help',
+                buttonText: {
+                    displayText: 'Help'
+                },
+                type: 1
+            },
+            {
+                buttonId: '+info',
+                buttonText: {
+                    displayText: 'Info'
+                },
+                type: 1
+            }
+        ]
+    let buttonMessaged = {
+        text: `Baileys Button Test ✅`,
+        footer: ‘Baileys ',
+        buttons: button,
+        headerType: 1
+    }
+    await this.client.sendMessage(from, buttonMessaged, {
+        quoted: M
+    })
+    void(await reply(`Hello! *${sender.username}* Darling`))
 }
