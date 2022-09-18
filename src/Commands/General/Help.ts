@@ -18,10 +18,9 @@ export default class extends BaseCommand {
             })).filter((command) => command.data.config.category !== 'dev')
             const { nsfw } = await this.client.DB.getGroup(M.from)
             if (!nsfw) commands = commands.filter(({ data }) => data.config.category !== 'nsfw')
-            const buffer = await this.client.utils.getBuffer('https://telegra.ph/file/f70cd80c046e6cb945f8e.mp4')
-            let text = `🎉 Hi there! 👋🏻 _@${M.sender.jid.split('@')[0]}_, I'm ${
+            let text = `👋🏻 (💙ω💙) Konichiwa! *@${M.sender.jid.split('@')[0]}*, I'm ${
                 this.client.config.name
-            }\n\n☘️ prefix - "${this.client.config.prefix}"\n\n🎐 *Note:* This is my usable menu list and I'm here to to help with my menu list.\n\n🔰 *Commands:* ${this.handler.commands.size}`
+            }\nMy prefix is - "${this.client.config.prefix}"\n\nThe usable commands are listed below.`
             const categories: string[] = []
             for (const command of commands) {
                 if (categories.includes(command.data.config.category)) continue
@@ -30,12 +29,24 @@ export default class extends BaseCommand {
             for (const category of categories) {
                 const categoryCommands: string[] = []
                 const filteredCommands = commands.filter((command) => command.data.config.category === category)
-                text += `\n\n*▬▬〖･${this.client.utils.capitalize(category)}･〗▬▬*\n\n`
+                text += `\n\n*━━━❰ ${this.client.utils.capitalize(category)} ❱━━━*\n\n`
                 filteredCommands.forEach((command) => categoryCommands.push(command.data.name))
-                text += `🌀${categoryCommands.join(', ')}`
+                text += `\`\`\`${categoryCommands.join(', ')}\`\`\``
             }
-            text += `\n\n 📝 *Note:* Use ${this.client.config.prefix}help <command_name> for more info of a specific command. Example: *${this.client.config.prefix}help hello*`
-            return void (await M.reply(buffer, 'video', true, undefined, text, [M.sender.jid]))
+                const sections: proto.ISection[] = []
+            const rows: proto.IRow[] = []
+                rows.push(
+                    {
+                        title: `Enable ${categoryCommands.join(', ')}`,
+                        rowId: `${this.client.config.prefix}set --${feature}=true`
+                    },
+                    {
+                        title: `${categoryCommands.join(', ')}`,
+                        rowId: `${this.client.config.prefix}set --${feature}=false`
+                    }
+                )
+            text += `\n\n📕 *Note:* Use ${this.client.config.prefix}help <command_name> for more info of a specific command. Example: *${this.client.config.prefix}help hello*`
+            return void (await M.reply(text, 'text', undefined, undefined, undefined, [M.sender.jid]))
         } else {
             const cmd = context.trim().toLowerCase()
             const command = this.handler.commands.get(cmd) || this.handler.aliases.get(cmd)
@@ -45,9 +56,9 @@ export default class extends BaseCommand {
                     !command.config.aliases
                         ? ''
                         : command.config.aliases.map((alias) => this.client.utils.capitalize(alias)).join(', ')
-                }\n🀄 *Category:* ${this.client.utils.capitalize(command.config.category)}\n⏰ *Cooldown:* ${
+                }\n🔗 *Category:* ${this.client.utils.capitalize(command.config.category)}\n⏰ *Cooldown:* ${
                     command.config.cooldown ?? 3
-                }s\n💮 *Usage:* ${command.config.usage
+                }s\n🎗 *Usage:* ${command.config.usage
                     .split('||')
                     .map((usage) => `${this.client.config.prefix}${usage.trim()}`)
                     .join(' | ')}\n🧧 *Description:* ${command.config.description}`
