@@ -23,7 +23,7 @@ export default class extends BaseCommand {
                                 buttons: buttons,
                                 headerType: 4
                             }
-                            await this.client.sendMessage(from, buttonMessage)
+                          void (await this.client.sendMessage(from, buttonMessage))
                         })
-       void (await reply(`Hello! *${sender.username}* Darling`))
+       //void (await reply(`Hello! *${sender.username}* Darling`))
 }
