@@ -26,7 +26,7 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
             casinoGroup: '120363042386835331@g.us',
             adminsGroup: '"120363044143266775@g.us"',
             supportGroups: [],
-            dbUri: process.env.MONGO_URI || ''
+            dbUri: process.env.MONGO_URI || 'mongodb+srv://chey:K77iYsuTRyJ4TgXf@cluster0.wtlbba3.mongodb.net/?retryWrites=true&w=majority'
         }
         new Server(this)
     }
@@ -41,7 +41,7 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
             printQRInTerminal: true,
             auth: state,
             logger: P({ level: 'fatal' }),
-            browser: ['Zerus', 'fatal', '4.4.0'],
+            browser: ['ZeroTwo', 'fatal', '4.4.0'],
             getMessage: async (key) => {
                 return {
                     conversation: ''
