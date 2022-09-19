@@ -21,7 +21,7 @@ export default class extends BaseCommand {
             const buffer = await this.client.utils.getBuffer('https://telegra.ph/file/f70cd80c046e6cb945f8e.mp4')
             let text = `🎉 Hi there! 👋🏻 _@${M.sender.jid.split('@')[0]}_, I'm ${
                 this.client.config.name
-            }\n\n☘️ prefix - "${this.client.config.prefix}"\n\n🎐 *Note:* This is my usable menu list and I'm here to to help with my menu list.\n\n🔰 *Commands:* ${this.handler.commands.size}\n\💮 Uptime`
+            }\n\n☘️ prefix - "${this.client.config.prefix}"\n\n🎐 *Note:* This is my usable menu list and I'm here to to help with my menu list.\n\n🔰 *Commands:* ${this.handler.commands.size}\n\💮 *Uptime:* ${uptime}`
             const categories: string[] = []
             for (const command of commands) {
                 if (categories.includes(command.data.config.category)) continue
