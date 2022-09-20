@@ -4388,26 +4388,3 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
-
-yt-search@^2.10.3, yt-search@^2.8.0:
-  version "2.10.3"
-  resolved "https://registry.yarnpkg.com/yt-search/-/yt-search-2.10.3.tgz#c90db45e4a960f06ef1bfe7ba13457790ded661e"
-  integrity sha512-msITxMhn+1f3RIlS2R0d5/275grX0nUgaD570Fap3gvPmwfvR9w31JG8B9++4Xtm6BLAzhdITK7kAWRInef8QQ==
-  dependencies:
-    async.parallellimit "~0.5.2"
-    boolstring "~1.0.2"
-    cheerio "^1.0.0-rc.10"
-    dasu "~0.4.3"
-    human-time "0.0.2"
-    jsonpath-plus "~5.0.2"
-    minimist "~1.2.5"
-    node-fzf "~0.5.1"
-
-ytdl-core@^4.11.0, ytdl-core@^4.8.3:
-  version "4.11.2"
-  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-4.11.2.tgz#c2341916b9757171741a2fa118b6ffbb4ffd92f7"
-  integrity sha512-D939t9b4ZzP3v0zDvehR2q+KgG97UTgrTKju3pOPGQcXtl4W6W5z0EpznzcJFu+OOpl7S7Ge8hv8zU65QnxYug==
-  dependencies:
-    m3u8stream "^0.8.6"
-    miniget "^4.2.2"
-    sax "^1.1.3"
