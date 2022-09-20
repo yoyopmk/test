@@ -20,7 +20,7 @@ export default class extends BaseCommand {
             if (!nsfw) commands = commands.filter(({ data }) => data.config.category !== 'nsfw')
             const buffer = await this.client.utils.getBuffer('https://telegra.ph/file/bd0f718f51e806ea1584e.mp4')
             let text = `🎉 Hi there! 👋🏻 _@${M.sender.jid.split('@')[0]}_, I'm ${
-                this.client.config.name I'm here to help you with my commands!!
+                this.client.config.name I am here to help you with my commands!!
             }\n\n☘️ *prefix:* "${this.client.config.prefix}"\n\n🔰 *Commands:* ${this.handler.commands.size}\n\n⛩️ *Categories:* 10`
             const categories: string[] = []
             for (const command of commands) {
