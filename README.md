@@ -25,10 +25,6 @@
 <img src='https://www.herokucdn.com/deploy/button.png'>
   
 </a>
-
-Deploy on Railway](https://railway.app/button.svg)
-
-</div><br/>
 <br/>
   
 </div>
