@@ -1,4 +1,29 @@
 {
+  "name": "Zerus",
+  "version": "0.0.1",
+  "description": "A WhatsApp bot written in TypeScript using Baileys",
+  "author": "Toshi_sama",
+  "main": "dist/bot.js",
+  "keywords": [
+    "bot",
+    "whatsapp",
+    "anime"
+  ],
+  "license": "AGPL-3.0",
+  "scripts": {
+    "format": "prettier --write --config .prettierrc.json \"src/**/*.ts\"",
+    "start": "node --max-old-space-size=4096 dist/bot.js",
+    "build": "yarn rimraf dist/ && yarn tsc -p .",
+    "postinstall": "yarn build"
+  },
+  "bugs": {
+    "url": "https://github.com/Toshi-san001/Zerus/issues"
+  },
+  "homepage": "https://github.com/Toshi-san001/Zerus",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Toshi-san001/Zerus.git"
+  },
   "dependencies": {
     "@adiwajshing/baileys": "^4.4.0",
     "@adiwajshing/keyed-db": "^0.2.4",
