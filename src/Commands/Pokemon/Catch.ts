@@ -20,8 +20,8 @@ export default class command extends BaseCommand {
         this.handler.pokemonResponse.delete(M.from)
         let flag = false
         let { party, pc } = await this.client.DB.getUser(M.sender.jid)
-        const Text = `you caught a Level ${data.level} ${this.client.utils.capitalize(data.name)}. ${
-            party.length >= 6 ? 'it has been transferred to your PC' : ''
+        const Text = `Congratulations 🎉 caught a Level ${data.level} ${this.client.utils.capitalize(data.name)}. ${
+            party.length >= 6 ? 'it has been transferred to your dex' : ''
         }`
         party.length >= 6 ? pc.push(data) : party.push(data)
         await this.client.DB.user.updateOne({ jid: M.sender.jid }, { $set: { party, pc } })
@@ -34,7 +34,7 @@ export default class command extends BaseCommand {
         ]
         const buttonMessage = {
             text: Text,
-            footer: '',
+            footer: 'Zerotwo 2022',
             buttons: buttons,
             headerType: 1
         }
