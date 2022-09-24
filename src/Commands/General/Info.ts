@@ -16,8 +16,11 @@ export default class extends BaseCommand {
             name: string
         }
         const image = this.client.assets.get('whatsapp-bot') as Buffer
+        const users = this.client.DB.user.countDocuments()
+        const chats: any = this.client.chats
+        const uban =  this.client.DB.user.countDocuments({ban: true})
         const uptime = this.client.utils.formatSeconds(process.uptime())
-        const text = `🀄 *ZeroTwo* 🀄\n\n📙 *Description: ${description}*\n\n🔰 *Commands:* ${this.handler.commands.size}\n\n💮 *Uptime:* ${uptime}`
+        const text = `💠 *ZeroTwo* 💠\n\n📙 *Description: ${description}*\n\n🔰 *Commands:* ${this.handler.commands.size}\n\n💮 *Uptime:* ${uptime}\n\n⛩️ *Total Users:* ${users}\n\n🍁 *Groups:* ${chats.length}\n\n🚫 *Banned Users:* ${uban}`
         return void (await reply(image, 'image', undefined, undefined, text, undefined, {
             title: this.client.utils.capitalize(name),
             thumbnail: image,
