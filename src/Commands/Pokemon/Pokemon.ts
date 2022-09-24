@@ -16,10 +16,10 @@ export default class command extends BaseCommand {
             .fetch<IPokemonAPIResponse>(`https://pokeapi.co/api/v2/pokemon/${term}`)
             .then(async (res) => {
                 const { party, pc } = await this.client.DB.getUser(M.sender.jid)
-                const text = `*Name:* ${this.client.utils.capitalize(res.name)}\n\n*ID:* ${res.id}\n\n*${
-                    res.types.length > 1 ? 'Types' : 'Type'
+                const text = `🔰 *Name:* ${this.client.utils.capitalize(res.name)}\n\n⛩️ *ID:* ${res.id}\n\n*${
+                    res.types.length > 1 ? 'Types' : '👾Type'
                 }:* ${res.types.map((type) => `${this.client.utils.capitalize(type.type.name)}`).join(', ')}\n\n*${
-                    res.abilities.length > 1 ? 'Abilities' : 'Ability'
+                    res.abilities.length > 1 ? 'Abilities' : '💠Ability'
                 }:* ${res.abilities
                     .map((ability) => `${this.client.utils.capitalize(ability.ability.name)}`)
                     .join(', ')}`
