@@ -17,7 +17,7 @@ export default class extends BaseCommand {
             text += ' '
             text += 'claimed charas'
             text += '\n'
-            gallery.forEach((x, i) => (text += `\n*#${i + 1} ${x.name}*`))
+            gallery.forEach((x, i) => (text += `\n*❯${i + 1} ${x.name}*`))
             return void (await M.reply(
                 await this.client.utils.getBuffer(gallery[0].images.jpg.image_url),
                 'image',
