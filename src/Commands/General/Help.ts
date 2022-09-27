@@ -1,53 +1,37 @@
-import { BaseCommand, Command, Message } from '../../Structures'
-import { IArgs } from '../../Types'
+import { proto } from '@adiwajshing/baileys'
+import { Message, BaseCommand, Command } from '../../Structures'
+import { IArgs, GroupFeatures } from '../../Types'
 
 @Command('help', {
-    description: "Displays the bot's usable commands",
-    aliases: ['h'],
-    cooldown: 10,
-    exp: 20,
-    usage: 'help || help <command_name>',
-    category: 'general'
+    description: 'Enables/Disables a certain group feature',
+    usage: 'help',
+    cooldown: 1,
+    category: 'moderation',
+    exp: 25,
+    aliases: ['feature']
 })
 export default class extends BaseCommand {
-    public override execute = async (M: Message, { context }: IArgs): Promise<void> => {
-        if (!context) {
-            let commands = Array.from(this.handler.commands, ([command, data]) => ({
-                command,
-                data
-            })).filter((command) => command.data.config.category !== 'dev')
-            const { nsfw } = await this.client.DB.getGroup(M.from)
-            if (!nsfw) commands = commands.filter(({ data }) => data.config.category !== 'nsfw')
+    public override execute = async (M: Message, { flags }: IArgs): Promise<void> => {
+        const features = Object.keys(GroupFeatures) as (keyof typeof GroupFeatures)[]
+        if (!flags.length) {
             const sections: proto.ISection[] = []
-            let text = `👋🏻 (💙ω💙) Konichiwa! *@${M.sender.jid.split('@')[0]}*, I'm ${
-                this.client.config.name
-            }\nMy prefix is - "${this.client.config.prefix}"\n\nThe usable commands are listed below.`
-            const categories: string[] = []
-            for (const command of commands) {
-                if (categories.includes(command.data.config.category)) continue
-                categories.push(command.data.config.category)
-            }
-            for (const category of categories) {
-                const categoryCommands: string[] = []
-                const filteredCommands = commands.filter((command) => command.data.config.category === category)
-                text += `\n\n*━━━❰ ${this.client.utils.capitalize(category)} ❱━━━*\n\n`
-                filteredCommands.forEach((command) => categoryCommands.push(command.data.name))
-                text += `\`\`\`${categoryCommands.join(', ')}\`\`\``
-            }
-            const rows: proto.IRow[] = []
-            rows.push(
+            let text = '☘️ *Hii there 🎉* ☘️'
+            for (const feature of features) {
+                const rows: proto.IRow[] = []
+                rows.push(
                     {
-                        title: `info`,
-                        rowId: `${this.client.config.prefix}info`
+                        title: `Help`,
+                        rowId: `${this.client.config.prefix}help`
                     },
                     {
-                        title: `help`,
-                        rowId: `${this.client.config.prefix}help`
+                        title: `Info`,
+                        rowId: `${this.client.config.prefix}info`
                     }
-             sections.push({ title: ${categoryCommands.join(', ')} rows })   
-            text += `\n\n📕 *Note:* Use ${this.client.config.prefix}help <command_name> for more info of a specific command. Example: *${this.client.config.prefix}help hello*`
-        }
-return void (await M.reply(text, 'text', undefined, undefined, undefined, [M.sender.jid]))
+                )
+                sections.push({ title: this.client.utils.capitalize(category)} rows })
+                text += ``\`\`\`${categoryCommands.join(', ')}\`\`\```
+            }
+            return void M.reply(
                 text,
                 'text',
                 undefined,
@@ -61,7 +45,7 @@ return void (await M.reply(text, 'text', undefined, undefined, undefined, [M.sen
                     sections,
                     buttonText: 'Group Features'
                 }
-         )
+            )
         } else {
             const cmd = context.trim().toLowerCase()
             const command = this.handler.commands.get(cmd) || this.handler.aliases.get(cmd)
