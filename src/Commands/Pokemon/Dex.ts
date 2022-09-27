@@ -16,7 +16,7 @@ export default class command extends BaseCommand {
         const buffer = await this.client.utils.getBuffer('https://telegra.ph/file/4dc8912fc40a24b7c61f4.jpg')
         const pokemons = [...party, ...pc]
         if (pokemons.length < 1) return void M.reply('no pokemon')
-        let text = `*🔰_Pokedex_🔰*\n` 
+        let text = `*▬▬〖🔰Pokedex🔰〗▬▬*\n` 
         pokemons.forEach((x) => (text += `\n*❯ ${this.client.utils.capitalize(x.name)}*`))
         return void (await M.reply(buffer, 'image', true, undefined, text, [M.sender.jid]))
     }
