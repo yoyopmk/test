@@ -12,7 +12,7 @@ import { IArgs } from '../../Types'
 export default class command extends BaseCommand {
     override execute = async (M: Message): Promise<void> => {
         const { party, pc } = await this.client.DB.getUser(M.sender.jid)
-        const image = this.client.assets.get('pokemons') as Buffer
+        const image = this.client.assets.get('pokemons.png') as Buffer
         const pokemons = [...party, ...pc]
         if (pokemons.length < 1) return void M.reply('no pokemon')
         let text = `*⭐ Pokedex ⭐*\n`
