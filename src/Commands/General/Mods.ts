@@ -12,7 +12,7 @@ import { Message, Command, BaseCommand } from '../../Structures'
 export default class extends BaseCommand {
     public override execute = async (M: Message): Promise<void> => {
         if (!this.client.config.mods.length) return void M.reply('*[UNMODERATED]*')
-        let text =" *▬▬▬〖･BOT MODS･〗▬▬▬*\n\n"
+        let text =" *▬〖･BOT MODS･〗▬*\n\n"
 let mentions:string[] = []
 this.client.config.mods.map((x)=>{
 text+= `*❯ @${this.client.contact.getContact(x).jid.split('@')[0]}*\n`
