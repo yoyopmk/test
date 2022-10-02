@@ -24,7 +24,7 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
             mods: ['919609900020@g.us'],
             PORT: Number(process.env.PORT || Math.floor(Math.random() * (9000 - 3000) + 3000)),
             casinoGroup: '120363026532845894@g.us',
-            adminsGroup: '120363046053003524@g.us',
+            adminsGroup: '',
             supportGroups: [],
             dbUri: process.env.MONGO_URI || 'mongodb+srv://chey:K77iYsuTRyJ4TgXf@cluster0.wtlbba3.mongodb.net/?retryWrites=true&w=majority'
         }
