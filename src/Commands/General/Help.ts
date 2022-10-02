@@ -22,8 +22,17 @@ export default class extends BaseCommand {
             let text = `🎉 Hi there! 👋🏻 *@${M.sender.jid.split('@')[0]}*, I'm ${
                 this.client.config.name
             }\n\n💠 *prefix:* "${this.client.config.prefix}"\n\n🔰 *Commands:* ${this.handler.commands.size}\n\n⛩️ *Categories:* 10`
+            const categories: string[] = []
+            for (const command of commands) {
+                if (categories.includes(command.data.config.category)) continue
+                categories.push(command.data.config.category)
             }
-                text += `hi`
+            for (const category of categories) {
+                const categoryCommands: string[] = []
+                const filteredCommands = commands.filter((command) => command.data.config.category === category)
+                text += `\n\n*▬▬〖･${this.client.utils.capitalize(category)}･〗▬▬*\n\n`
+                filteredCommands.forEach((command) => categoryCommands.push(command.data.name))
+                text += `${categoryCommands.join(', ')}`
             }
             text += `\n\n📔 *Note:* Use ${this.client.config.prefix}help <command_name> for more info of a specific command\n\n⭐ *Example:* *${this.client.config.prefix}help hello*`
             return void (await M.reply(buffer, 'video', true, undefined, text, [M.sender.jid]))
