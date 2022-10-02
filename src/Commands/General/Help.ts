@@ -22,7 +22,8 @@ export default class extends BaseCommand {
             let text = `🎉 Hi there! 👋🏻 *@${M.sender.jid.split('@')[0]}*, I'm ${
                 this.client.config.name
             }\n\n💠 *prefix:* "${this.client.config.prefix}"\n\n🔰 *Commands:* ${this.handler.commands.size}\n\n⛩️ *Categories:* 10`
-                text += `Hi`
+            }
+                text += `hi`
             }
             text += `\n\n📔 *Note:* Use ${this.client.config.prefix}help <command_name> for more info of a specific command\n\n⭐ *Example:* *${this.client.config.prefix}help hello*`
             return void (await M.reply(buffer, 'video', true, undefined, text, [M.sender.jid]))
