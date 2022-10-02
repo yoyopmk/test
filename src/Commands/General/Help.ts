@@ -18,7 +18,6 @@ export default class extends BaseCommand {
             })).filter((command) => command.data.config.category !== 'dev')
             const { nsfw } = await this.client.DB.getGroup(M.from)
             if (!nsfw) commands = commands.filter(({ data }) => data.config.category !== 'nsfw')
-            const buffer = await this.client.utils.getBuffer('https://telegra.ph/file/bd0f718f51e806ea1584e.mp4')
             let text = `🎉 Hi there! 👋🏻 *@${M.sender.jid.split('@')[0]}*, I'm ${
                 this.client.config.name
             }\n\n💠 *prefix:* "${this.client.config.prefix}"\n\n🔰 *Commands:* ${this.handler.commands.size}\n\n⛩️ *Categories:* 10`
@@ -30,12 +29,12 @@ export default class extends BaseCommand {
             for (const category of categories) {
                 const categoryCommands: string[] = []
                 const filteredCommands = commands.filter((command) => command.data.config.category === category)
-                text += `\n\n*▬▬〖･${this.client.utils.capitalize(category)}･〗▬▬*\n\n`
+                text += `\n\n*════[${this.client.utils.capitalize(category)}]════*\n\n`
                 filteredCommands.forEach((command) => categoryCommands.push(command.data.name))
-                text += `${categoryCommands.join(', ')}`
+                text += `\`\`\`${categoryCommands.join(', ')}\`\`\``
             }
             text += `\n\n📔 *Note:* Use ${this.client.config.prefix}help <command_name> for more info of a specific command\n\n⭐ *Example:* *${this.client.config.prefix}help hello*`
-            return void (await M.reply(buffer, 'video', true, undefined, text, [M.sender.jid]))
+            return void (await M.reply(text, 'text', undefined, undefined, undefined, [M.sender.jid]))
         } else {
             const cmd = context.trim().toLowerCase()
             const command = this.handler.commands.get(cmd) || this.handler.aliases.get(cmd)
