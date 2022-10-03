@@ -17,34 +17,22 @@ export default class extends BaseCommand {
                 data
             })).filter((command) => command.data.config.category !== 'dev')
             const { nsfw } = await this.client.DB.getGroup(M.from)
-            const sections: proto.ISection[] = []
             if (!nsfw) commands = commands.filter(({ data }) => data.config.category !== 'nsfw')
             let text = `🎉 Hi there! 👋🏻 *@${M.sender.jid.split('@')[0]}*, I'm ${
                 this.client.config.name
-            }\n\n💠 *prefix:~>* "${this.client.config.prefix}"\n\n🔰 *Commands:~>* ${this.handler.commands.size}\n\n⛩️ *Categories:~>* 10`
+            }\n\n💠 *prefix:~>* "${this.client.config.prefix}"\n\n🔰 *Commands:~>* ${this.handler.commands.size}\n\n⛩️ *Categories:~>* 10\n\n  👾 𝐂𝐨𝐦𝐦𝐚𝐧𝐝 𝐋𝐢𝐬𝐭 👾`
             const categories: string[] = []
             for (const command of commands) {
                 if (categories.includes(command.data.config.category)) continue
                 categories.push(command.data.config.category)
             }
             for (const category of categories) {
-                const filteredCommands = commands.filter((command) => command.data.config.category === category)
                 const categoryCommands: string[] = []
-                const rows: proto.IRow[] = []
+                const filteredCommands = commands.filter((command) => command.data.config.category === category)
                 text += `\n\n*════[${this.client.utils.capitalize(category)}]════*\n\n`
                 filteredCommands.forEach((command) => categoryCommands.push(command.data.name))
                 text += `\`\`\`${categoryCommands.join(', ')}\`\`\``
             }
-const rows: proto.IRow[] = []
-                rows.push(
-                    {
-                        title: `Enable ${this.client.utils.capitalize(feature)}`,
-                        rowId: `${this.client.config.prefix}set --${feature}=true`
-                    },
-                    {
-                        title: `Disable ${this.client.utils.capitalize(feature)}`,
-                        rowId: `${this.client.config.prefix}set --${feature}=false`
-}
             text += `\n\n📔 *Note:* Use ${this.client.config.prefix}help <command_name> for more info of a specific command\n\n⭐ *Example:* *${this.client.config.prefix}help hello*`
             return void (await M.reply(text, 'text', undefined, undefined, undefined, [M.sender.jid]))
         } else {
