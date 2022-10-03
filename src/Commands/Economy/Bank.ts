@@ -9,6 +9,7 @@ import { BaseCommand, Command, Message } from '../../Structures'
 })
 export default class command extends BaseCommand {
     override execute = async ({ from, sender, message }: Message): Promise<void> => {
+        const buffer = await this.client.utils.getBuffer('https://telegra.ph/file/f714d52a7d7aa374934cc.jpg')
         const { bank, tag } = await this.client.DB.getUser(sender.jid)
         const buttons = [
             {
@@ -23,6 +24,7 @@ export default class command extends BaseCommand {
             buttons: buttons,
             headerType: 1
         }
+        return void (await M.reply(buffer, 'image', true, undefined, text, [M.sender.jid]))
         return void (await this.client.sendMessage(from, buttonMessage, {
             quoted: message
         }))
