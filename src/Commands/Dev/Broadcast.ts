@@ -28,7 +28,7 @@ export default class command extends BaseCommand {
             if (context) caption = context.trim()
             else caption = M.quoted?.content.trim() as string
             if (!arr.length) arr = await this.client.getAllGroups()
-            const text = `*「 BOT 」*\n\n🍁 *Author:* *${M.sender.username}*\n\n${caption}`
+            const text = `*「 ZeroTwo_Broadcast 」*\n\n🎉 *Author:* ${M.sender.username}\n\n🎋 *Message* ${caption}`
             for (const group of arr) {
                 await delay(5000)
                 await this.client.sendMessage(group, {
