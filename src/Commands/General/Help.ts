@@ -17,6 +17,7 @@ export default class extends BaseCommand {
                 data
             })).filter((command) => command.data.config.category !== 'dev')
             const { nsfw } = await this.client.DB.getGroup(M.from)
+            const sections: proto.ISection[] = []
             if (!nsfw) commands = commands.filter(({ data }) => data.config.category !== 'nsfw')
             let text = `🎉 Hi there! 👋🏻 *@${M.sender.jid.split('@')[0]}*, I'm ${
                 this.client.config.name
@@ -32,6 +33,22 @@ export default class extends BaseCommand {
                 text += `\n\n*════[${this.client.utils.capitalize(category)}]════*\n\n`
                 filteredCommands.forEach((command) => categoryCommands.push(command.data.name))
                 text += `\`\`\`${categoryCommands.join(', ')}\`\`\``
+            }
+const rows: proto.IRow[] = []
+rows.push(
+                    {
+                        title: `Enable ${this.client.utils.capitalize(feature)}`,
+                        rowId: `${this.client.config.prefix}set --${feature}=true`
+                    },
+                    {
+                        title: `Disable ${this.client.utils.capitalize(feature)}`,
+                        rowId: `${this.client.config.prefix}set --${feature}=false`
+                    }
+                )
+                sections.push({ title: this.client.utils.capitalize(feature), rows })
+                text += `\n\n⭐ *Feature:* ${this.client.utils.capitalize(feature)}\n🌀 *Description:* ${
+                    GroupFeatures[feature]
+                }`
             }
             text += `\n\n📔 *Note:* Use ${this.client.config.prefix}help <command_name> for more info of a specific command\n\n⭐ *Example:* *${this.client.config.prefix}help hello*`
             return void (await M.reply(text, 'text', undefined, undefined, undefined, [M.sender.jid]))
