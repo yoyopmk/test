@@ -28,14 +28,15 @@ export default class extends BaseCommand {
                 categories.push(command.data.config.category)
             }
             for (const category of categories) {
-                const categoryCommands: string[] = []
                 const filteredCommands = commands.filter((command) => command.data.config.category === category)
+                const categoryCommands: string[] = []
+                const rows: proto.IRow[] = []
                 text += `\n\n*════[${this.client.utils.capitalize(category)}]════*\n\n`
                 filteredCommands.forEach((command) => categoryCommands.push(command.data.name))
                 text += `\`\`\`${categoryCommands.join(', ')}\`\`\``
             }
 const rows: proto.IRow[] = []
-rows.push(
+                rows.push(
                     {
                         title: `Enable ${this.client.utils.capitalize(feature)}`,
                         rowId: `${this.client.config.prefix}set --${feature}=true`
@@ -43,13 +44,7 @@ rows.push(
                     {
                         title: `Disable ${this.client.utils.capitalize(feature)}`,
                         rowId: `${this.client.config.prefix}set --${feature}=false`
-                    }
-                )
-                sections.push({ title: this.client.utils.capitalize(feature), rows })
-                text += `\n\n⭐ *Feature:* ${this.client.utils.capitalize(feature)}\n🌀 *Description:* ${
-                    GroupFeatures[feature]
-                }`
-            }
+}
             text += `\n\n📔 *Note:* Use ${this.client.config.prefix}help <command_name> for more info of a specific command\n\n⭐ *Example:* *${this.client.config.prefix}help hello*`
             return void (await M.reply(text, 'text', undefined, undefined, undefined, [M.sender.jid]))
         } else {
