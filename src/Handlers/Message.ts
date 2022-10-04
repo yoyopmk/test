@@ -99,7 +99,7 @@ try {
         if (bot != this.client.config.name.split(' ')[0] && bot !== 'all' && !commands.includes(cmd)) return void null
        if (banned) return void M.reply(`🚫 You are banned from using commands 🚫`)
         const command = this.commands.get(cmd) || this.aliases.get(cmd)
-        if (!command) return void M.reply(`🟥 No, such a command type || *${this.client.config.prefix}help* to know more`)
+        if (!command) return void M.reply(`❗ There is no command *${sender.username}* || Type *${this.client.config.prefix}help* to know more`)
         const disabledCommands = await this.client.DB.getDisabledCommands()
         const index = disabledCommands.findIndex((CMD) => CMD.command === command.name)
         if (index >= 0)
