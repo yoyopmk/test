@@ -21,7 +21,7 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
             name: 'ZeroTwo',
             session: process.env.SESSION || 'S',
             prefix: '!',
-            mods: ['919609900020@g.us'],
+            mods: ['919389379221@g.us'],
             PORT: Number(process.env.PORT || Math.floor(Math.random() * (9000 - 3000) + 3000)),
             casinoGroup: '120363046053003524@g.us',
             adminsGroup: '120363045085129711@g.us',
