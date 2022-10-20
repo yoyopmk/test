@@ -8,6 +8,7 @@ import { Message, Client, BaseCommand } from '../Structures'
 import { getStats } from '../lib'
 import { ICommand, IArgs, IPokemonAPIResponse } from '../Types'
 import { Pokemon } from '../Database'
+import axios from 'axios'
 
 export class MessageHandler {
     constructor(private client: Client) {}
@@ -77,6 +78,24 @@ export class MessageHandler {
         const { prefix } = this.client.config
         const args = M.content.split(' ')
         const title = M.chat === 'dm' ? 'DM' : M.groupMetadata?.subject || 'Group'
+        const text = M.content
+        if (M.chat === 'dm' && (await this.client.DB.getFeature('chatbot')).state) {
+          if (M.message.key.fromMe) return void null;
+            if (this.client.config.chatBotUrl) {
+                const myUrl = this.client.config.chatBotUrl
+                let get = new URL(myUrl)
+                let params = get.searchParams;
+                    await axios
+                    .get(`${encodeURI(`http://api.brainshop.ai/get?bid=${params.get('bid')}&key=${params.get('key')}&uid=${M.sender.jid}&msg=${text}`)}`)       
+                    .then((res) => {
+                        if (res.status !== 200) return void M.reply(`Error: ${res.status}`)
+                        return void M.reply(res.data.cnt)
+                    })
+                    .catch(() => {
+                        M.reply(`Well....`)
+                    })
+            }
+        }
         await this.moderate(M)
         if (!args[0] || !args[0].startsWith(prefix))
             return void this.client.log(
@@ -99,7 +118,7 @@ try {
         if (bot != this.client.config.name.split(' ')[0] && bot !== 'all' && !commands.includes(cmd)) return void null
        if (banned) return void M.reply(`🚫 You are banned from using commands 🚫`)
         const command = this.commands.get(cmd) || this.aliases.get(cmd)
-        if (!command) return void M.reply(`❗ There is no command *${sender.username}* || Type *${this.client.config.prefix}help* to know more`)
+        if (!command) return void M.reply(`🦋 Did you mean #help`)
         const disabledCommands = await this.client.DB.getDisabledCommands()
         const index = disabledCommands.findIndex((CMD) => CMD.command === command.name)
         if (index >= 0)
