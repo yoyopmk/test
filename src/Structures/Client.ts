@@ -24,7 +24,7 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
             mods: ['919389379221@g.us'],
             PORT: Number(process.env.PORT || Math.floor(Math.random() * (9000 - 3000) + 3000)),
             chatBotUrl: process.env.CHAT_BOT_URL || '',
-            casinoGroup: '120363046053003524@g.us',
+            casinoGroup: '120363045097512261@g.us',
             adminsGroup: '120363046606789357@g.us',
             supportGroups: [],
             dbUri: process.env.MONGO_URI || 'mongodb+srv://kakashibotz:kakashibotz@forkakshi.yv1qvog.mongodb.net/?retryWrites=true&w=majority'
