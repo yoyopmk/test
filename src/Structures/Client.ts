@@ -67,21 +67,21 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
                         action
                     })
                 switch (M.stubType) {
-                    case proto.WebMessageInfo.WebMessageInfoStubType.GROUP_CREATE:
+                    case proto.WebMessageInfo.StubType.GROUP_CREATE:
                         return void this.emit('new_group_joined', {
                             jid: M.from,
                             subject: M.stubParameters[0]
                         })
-                    case proto.WebMessageInfo.WebMessageInfoStubType.GROUP_PARTICIPANT_ADD:
-                    case proto.WebMessageInfo.WebMessageInfoStubType.GROUP_PARTICIPANT_ADD_REQUEST_JOIN:
-                    case proto.WebMessageInfo.WebMessageInfoStubType.GROUP_PARTICIPANT_INVITE:
+                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_ADD:
+                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_ADD_REQUEST_JOIN:
+                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_INVITE:
                         return void emitParticipantsUpdate('add')
-                    case proto.WebMessageInfo.WebMessageInfoStubType.GROUP_PARTICIPANT_LEAVE:
-                    case proto.WebMessageInfo.WebMessageInfoStubType.GROUP_PARTICIPANT_REMOVE:
+                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_LEAVE:
+                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_REMOVE:
                         return void emitParticipantsUpdate('remove')
-                    case proto.WebMessageInfo.WebMessageInfoStubType.GROUP_PARTICIPANT_DEMOTE:
+                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_DEMOTE:
                         return void emitParticipantsUpdate('demote')
-                    case proto.WebMessageInfo.WebMessageInfoStubType.GROUP_PARTICIPANT_PROMOTE:
+                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_PROMOTE:
                         return void emitParticipantsUpdate('promote')
                 }
             }
