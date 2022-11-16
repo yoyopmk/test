@@ -3,6 +3,7 @@ import { tmpdir } from 'os'
 import { promisify } from 'util'
 import { exec } from 'child_process'
 import { readFile, unlink, writeFile } from 'fs-extra'
+const { uploadByBuffer } = require('telegraph-uploader')
 import regex from 'emoji-regex'
 import getUrls from 'get-urls'
 
@@ -30,6 +31,8 @@ export class Utils {
     public extractEmojis = (content: string): string[] => content.match(regex()) || []
 
     public formatSeconds = (seconds: number): string => new Date(seconds * 1000).toISOString().substr(11, 8)
+
+    public bufferToUrl = async (media: Buffer): Promise<Buffer> => (await uploadByBuffer(media)).link
 
     public convertMs = (ms: number, to: 'seconds' | 'minutes' | 'hours' = 'seconds'): number => {
         const seconds = parseInt((ms / 1000).toString().split('.')[0])
