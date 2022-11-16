@@ -129,7 +129,7 @@ export class Message {
             .catch(() => this)
     }
 
-    get stubType(): proto.WebMessageInfo.WebMessageInfoStubType | null | undefined {
+    get stubType(): proto.WebMessageInfo.StubType | null | undefined {
         return this.M.messageStubType
     }
 
@@ -147,7 +147,7 @@ export class Message {
         externalAdReply?: proto.IContextInfo['externalAdReply'],
         thumbnail?: Buffer,
         fileName?: string,
-        options: { sections?: proto.ISection[]; buttonText?: string; title?: string } = {}
+        options: { sections?: proto.Message.ListMessage.ISection[]; buttonText?: string; title?: string } = {}
     ): Promise<ReturnType<typeof this.client.sendMessage>> => {
         if (type === 'text' && Buffer.isBuffer(content)) throw new Error('Cannot send Buffer as a text message')
         return this.client.sendMessage(
