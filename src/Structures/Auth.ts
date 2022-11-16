@@ -43,7 +43,7 @@ export class AuthenticationFromDatabase {
                         return ids.reduce((dict: any, id) => {
                             let value = keys[key]?.[id]
                             if (value) {
-                                if (type === 'app-state-sync-key') value = proto.AppStateSyncKeyData.fromObject(value)
+                                if (type === 'app-state-sync-key') value = proto.Message.AppStateSyncKeyData.fromObject(value)
                                 dict[id] = value
                             }
                             return dict
