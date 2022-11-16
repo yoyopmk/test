@@ -6,7 +6,7 @@ import { IArgs } from '../../Types'
     description: '',
     usage: '',
     category: 'economy',
-    cooldown: 25,
+    cooldown: 5,
     exp: 20,
     casino: true
 })
