@@ -5,8 +5,10 @@ import {
     contactSchema,
     sessionSchema,
     disabledCommandsSchema,
+    featureSchema,
     TCommandModel,
     TGroupModel,
+    TFeatureModel,
     TSessionModel,
     TUserModel,
     User,
@@ -87,6 +89,17 @@ export class Database {
         await this.disabledCommands.updateOne({ title: 'commands' }, { $set: { disabledCommands: update } })
     }
 
+    public getFeature = async (feature: string): Promise<TFeatureModel> =>
+        (await this.feature.findOne({ feature })) ||
+        (await new this.feature({
+            feature 
+        }).save())
+
+    public updateFeature = async (feature: string, update: boolean): Promise<void> => {
+        await this.getFeature(feature)
+        await this.feature.updateOne({ feature: feature }, { $set: { state: update } })
+    }
+
     private utils = new Utils()
 
     public user = userSchema
@@ -98,4 +111,6 @@ export class Database {
     public session = sessionSchema
 
     public disabledCommands = disabledCommandsSchema
+
+    public feature = featureSchema
 }
