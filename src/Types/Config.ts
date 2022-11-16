@@ -17,4 +17,6 @@ export interface IConfig {
     adminsGroup: string
     /** MongoDB URI to connect at the database */
     dbUri: string
+    /**api from brainshop for chat bot */
+    chatBotUrl: string
 }
