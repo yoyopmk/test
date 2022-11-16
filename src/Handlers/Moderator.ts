@@ -4,7 +4,7 @@ import { Client } from '../Structures'
 export class ModHandler {
     constructor(private client: Client) {}
 
-    public loadMods = async (): Promise<void> => {
+    loadMods = async (): Promise<void> => {
         if (this.client.config.adminsGroup === '') return void null
         this.client.log('Loading Moderators...')
         await delay(5000)
