@@ -37,7 +37,7 @@ export default class command extends BaseCommand {
         ]
         const buttonMessage = {
             text: '*Congratulations 🎉 You have claimed Your Daily 1000 Gold*',
-            footer: '© ZeroTwo 2022',
+            footer: 'Levi 2022 🚀✨',
             buttons: buttons,
             headerType: 1
         }

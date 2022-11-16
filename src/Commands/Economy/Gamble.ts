@@ -29,8 +29,8 @@ export default class command extends BaseCommand {
         const result = directions[Math.floor(Math.random() * directions.length)]
         await this.client.DB.setGold(M.sender.jid, result === direction ? amount : -amount)
         const sticker = await new Sticker(this.client.assets.get(result) as Buffer, {
-            pack: '🏮ZeroTwo',
-            author: `Best is yet to be🏮`,
+            pack: 'Levi 2022 🚀✨',
+            author: `Life is hell`,
             quality: 90,
             type: 'full'
         }).build()

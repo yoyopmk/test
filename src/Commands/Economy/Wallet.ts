@@ -19,7 +19,7 @@ export default class command extends BaseCommand {
         ]
         const buttonMessage = {
             text: `👛 *Wallet* 👛\n\n⛩️ *Name:- ${sender.username}*\n\n  💮 *tag: #${tag}*\n\n🪙 *Gold: ${wallet}*`,
-            footer: '©ZeroTwo 2022',
+            footer: 'Levi 2022 🚀✨',
             buttons: buttons,
             headerType: 1
         }
