@@ -19,15 +19,13 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
         Config()
         this.config = {
             name: 'Levi',
-            session: process.env.SESSION || 'Levibro',
+            session: process.env.SESSION || 'Lebi',
             prefix: '-',
             mods: ['919389379221@g.us'],
             PORT: Number(process.env.PORT || Math.floor(Math.random() * (9000 - 3000) + 3000)),
-            chatBotUrl: process.env.CHAT_BOT_URL || 'http://api.brainshop.ai/get?bid=158484&key=AF9RvRrK14AhY46N&uid=[uid]&msg=[msg]
-
-',
+            chatBotUrl: process.env.CHAT_BOT_URL || '',
             casinoGroup: '120363028992134147@g.us',
-            adminsGroup: '120363046914098132@g.us',
+            adminsGroup: '120363028992134147@g.us',
             supportGroups: [],
             dbUri: process.env.MONGO_URI || 'mongodb+srv://shinei:BAKA@just.xmzds.mongodb.net/?retryWrites=true&w=majority'
         }
@@ -69,21 +67,21 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
                         action
                     })
                 switch (M.stubType) {
-                    case proto.WebMessageInfo.StubType.GROUP_CREATE:
+                    case proto.WebMessageInfo.WebMessageInfoStubType.GROUP_CREATE:
                         return void this.emit('new_group_joined', {
                             jid: M.from,
                             subject: M.stubParameters[0]
                         })
-                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_ADD:
-                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_ADD_REQUEST_JOIN:
-                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_INVITE:
+                    case proto.WebMessageInfo.WebMessageInfoStubType.GROUP_PARTICIPANT_ADD:
+                    case proto.WebMessageInfo.WebMessageInfoStubType.GROUP_PARTICIPANT_ADD_REQUEST_JOIN:
+                    case proto.WebMessageInfo.WebMessageInfoStubType.GROUP_PARTICIPANT_INVITE:
                         return void emitParticipantsUpdate('add')
-                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_LEAVE:
-                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_REMOVE:
+                    case proto.WebMessageInfo.WebMessageInfoStubType.GROUP_PARTICIPANT_LEAVE:
+                    case proto.WebMessageInfo.WebMessageInfoStubType.GROUP_PARTICIPANT_REMOVE:
                         return void emitParticipantsUpdate('remove')
-                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_DEMOTE:
+                    case proto.WebMessageInfo.WebMessageInfoStubType.GROUP_PARTICIPANT_DEMOTE:
                         return void emitParticipantsUpdate('demote')
-                    case proto.WebMessageInfo.StubType.GROUP_PARTICIPANT_PROMOTE:
+                    case proto.WebMessageInfo.WebMessageInfoStubType.GROUP_PARTICIPANT_PROMOTE:
                         return void emitParticipantsUpdate('promote')
                 }
             }
