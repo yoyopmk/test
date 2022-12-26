@@ -29,7 +29,7 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
             casinoGroup: '120363028992134147@g.us',
             adminsGroup: '120363046914098132@g.us',
             supportGroups: [],
-            dbUri: process.env.MONGO_URI || 'mongodb+srv://kakashibotz:kakashibotz@forkakshi.yv1qvog.mongodb.net/?retryWrites=true&w=majority'
+            dbUri: process.env.MONGO_URI || 'mongodb+srv://shinei:BAKA@just.xmzds.mongodb.net/?retryWrites=true&w=majority'
         }
         new Server(this)
     }
