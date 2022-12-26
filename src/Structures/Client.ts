@@ -26,7 +26,7 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
             chatBotUrl: process.env.CHAT_BOT_URL || 'http://api.brainshop.ai/get?bid=158484&key=AF9RvRrK14AhY46N&uid=[uid]&msg=[msg]
 
 ',
-            casinoGroup: '120363045097512261@g.us',
+            casinoGroup: '120363028992134147@g.us',
             adminsGroup: '120363046914098132@g.us',
             supportGroups: [],
             dbUri: process.env.MONGO_URI || 'mongodb+srv://kakashibotz:kakashibotz@forkakshi.yv1qvog.mongodb.net/?retryWrites=true&w=majority'
